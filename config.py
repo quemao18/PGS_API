@@ -25,7 +25,7 @@ JWT_EXPIRATION_DELTA = datetime.timedelta(3200) # Set the token validity
 # MONGO DATABASE CONFIGURATION
 # ----------------------------------------------------------------
 # MongoDB configuration parameters
-MONGODB_DB = 'jwt_auth'
+MONGODB_DB = 'pgs'
 MONGODB_HOST = '127.0.0.1'
 MONGODB_PORT = 27017 #port here
 MONGODB_USERNAME = ''

@@ -5,7 +5,7 @@ import os
 from pgs_api import app
 
 """
-Garnet API is a boilerplate application that allows you to create Python + Flask API
+PGS API is a boilerplate application that allows you to create Python + Flask API
 applications based on a Model-View-Controller (MVC) pattern. It supports out of the
 box interaction with Mongo DB Document Database, JWT Token Generation and Authentication,
 basic and extensible identity model.
