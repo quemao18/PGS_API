@@ -12,7 +12,7 @@ from flask_cors import CORS
 # ------------------------------------------------------------------------------
 
 __version__ = '1.0'
-app = Flask('garnet_api')
+app = Flask('pgs_api')
 CORS(app)
 
 app.config.from_object('config')
@@ -38,7 +38,7 @@ db = MongoEngine(app)
 # ------------------------------------------------------------------------------
 
 # Import all garnet_api controller files
-from garnet_api.controllers import *
-from garnet_api.security import idam
+from pgs_api.controllers import *
+from pgs_api.security import idam
 
 jwt = JWT(app, idam.authenticate, idam.identity)

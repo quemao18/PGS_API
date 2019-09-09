@@ -3,7 +3,7 @@
 from mongoengine import Document, StringField, DateTimeField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
-from garnet_api.security.entropy import gen_salt, compute_hash
+from pgs_api.security.entropy import gen_salt, compute_hash
 import datetime
 
 

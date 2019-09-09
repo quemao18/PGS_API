@@ -1,4 +1,4 @@
-from garnet_api import app
+from pgs_api import app
 from flask import jsonify
 
 

@@ -1,11 +1,11 @@
-from garnet_api import app
+from pgs_api import app
 from flask import request, jsonify
-from garnet_api.models.account import User
-from garnet_api.models.account import UserService
-from garnet_api.security.idam import find_user
-from garnet_api.extensions.jsonp import enable_jsonp
-from garnet_api.extensions.error_handling import ErrorResponse
-from garnet_api.extensions.error_handling import SuccessResponse
+from pgs_api.models.account import User
+from pgs_api.models.account import UserService
+from pgs_api.security.idam import find_user
+from pgs_api.extensions.jsonp import enable_jsonp
+from pgs_api.extensions.error_handling import ErrorResponse
+from pgs_api.extensions.error_handling import SuccessResponse
 from flask_jwt import jwt_required, current_identity
 import uuid
 import mongoengine
