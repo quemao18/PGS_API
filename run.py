@@ -11,7 +11,7 @@ box interaction with Mongo DB Document Database, JWT Token Generation and Authen
 basic and extensible identity model.
 """
 
-__author__ = "Pedro Guzman (pedro@subvertic.com)"
+__author__ = "Alejandro Toba (alejandro.toba@gmail.com)"
 __version__ = "1.0"
 
 if __name__ == '__main__':

@@ -9,7 +9,7 @@ from flask import jsonify
 @app.route('/', methods=['GET'])
 def get_api_root():
     return jsonify({
-        "platform": "Garnet API 1.0",
+        "platform": "PSG API 1.0",
         "version": "1.0",
-        "message": "Garnet Satellite is now in Orbit!"
+        "message": "API para el cotizador de PSG Consulting!"
     })
