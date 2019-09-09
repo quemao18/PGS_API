@@ -5,6 +5,7 @@ from logging.handlers import RotatingFileHandler
 from flask import Flask
 from flask_mongoengine import MongoEngine
 from flask_jwt import JWT
+from flask_cors import CORS
 
 # ------------------------------------------------------------------------------
 # SETUP GENERAL APPLICATION
@@ -12,8 +13,11 @@ from flask_jwt import JWT
 
 __version__ = '1.0'
 app = Flask('garnet_api')
+CORS(app)
+
 app.config.from_object('config')
 app.debug = True
+
 
 # ------------------------------------------------------------------------------
 # SETUP LOGGING

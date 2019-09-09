@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import *
+from mongoengine import Document, StringField, DateTimeField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from garnet_api.security.entropy import gen_salt, compute_hash
@@ -10,11 +10,14 @@ import datetime
 # ------------------------------------------------------------------------------
 # CLASS IDENTITY
 # ------------------------------------------------------------------------------
+# pylint: disable=too-few-public-methods
 class SessionIdentity:
+    """Class session Identity."""
     # --------------------------------------------------------------------------
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
-    def __init__(self, id, username, name, last_name, email):
+    # pylint: disable=too-many-arguments
+    def __init__(self, id, username, name, last_name, email): 
         self.id = id
         self.username = username
         self.name = name
@@ -25,6 +28,7 @@ class SessionIdentity:
     # METHOD STR
     # --------------------------------------------------------------------------
     def as_json(self):
+        """The method return as json."""
         return jsonify({
             "id": self.id,
             "username": self.username,
@@ -39,6 +43,7 @@ class SessionIdentity:
 # ------------------------------------------------------------------------------
 # Represents a User within the Satellite Identity sub-system.
 class User(Document):
+    """Class User."""
     # --------------------------------------------------------------------------
     # USER PROPERTIES
     # --------------------------------------------------------------------------
@@ -78,21 +83,23 @@ class User(Document):
     # METHOD IS_AUTHORIZED_TO
     # --------------------------------------------------------------------------
     def is_authorized_to(self, action):
+        """The method is authorized"""
         return action in self.claims
 
     # --------------------------------------------------------------------------
     # METHOD ADD_CLAIM
     # --------------------------------------------------------------------------
     def add_claim(self, claim):
+        """The method for add claim"""
         if claim not in self.claims:
             self.claims.append(claim)
             self.save()
-        return
 
     # --------------------------------------------------------------------------
     # METHOD UPDATE PASSWORD
     # --------------------------------------------------------------------------
     def update_password(self, password):
+        """The method for update password"""
         self.password = compute_hash(password, self.salt)
         self.save()
         return True
@@ -101,6 +108,7 @@ class User(Document):
     # METHOD UPDATE EMAIL
     # --------------------------------------------------------------------------
     def update_email(self, email):
+        """The method for update email"""
         self.email = email
         self.save()
         return True
@@ -109,6 +117,7 @@ class User(Document):
     # METHOD AUTHENTICATE
     # --------------------------------------------------------------------------
     def authenticate(self, password):
+        """The method for authenticate user"""
         challenge = compute_hash(password, self.salt)
         return safe_str_cmp(self.password.encode('utf-8'), challenge.encode('utf-8'))
 
@@ -116,6 +125,7 @@ class User(Document):
     # METHOD GET IDENTITY
     # --------------------------------------------------------------------------
     def get_identity(self):
+        """The method for get identity"""
         return SessionIdentity(self.user_id,
                                self.username,
                                self.name,
@@ -127,11 +137,14 @@ class User(Document):
 # CLASS USER SERVICE
 # ------------------------------------------------------------------------------
 # Represents a user service that allows easy management of User objects
-class UserService:
+# pylint: disable=too-few-public-methods
+class UserService: 
+    """The class user service"""
     def __init__(self, user_id):
         self.user_id = user_id
 
     def get_user(self):
+        """The method for get user"""
         user = User.objects.get(user_id=self.user_id)
         if user:
             return user

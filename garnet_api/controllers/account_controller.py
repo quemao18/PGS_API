@@ -8,7 +8,8 @@ from garnet_api.extensions.error_handling import ErrorResponse
 from garnet_api.extensions.error_handling import SuccessResponse
 from flask_jwt import jwt_required, current_identity
 import uuid
-
+import mongoengine
+import re
 
 # --------------------------------------------------------------------------
 # GET ACCOUNT
@@ -85,7 +86,8 @@ def update_account_email(user_id):
 def post_account():
     user_data = request.get_json()
     if user_data:
-        user = User(
+        try:
+            user = User(
             user_id=str(uuid.uuid4()),
             name=user_data['name'],
             last_name=user_data['last_name'],
@@ -93,8 +95,14 @@ def post_account():
             username=user_data['username'],
             password=None
             )
-        user.update_password(user_data['password'])
-        user.save(validate=True)
-        app.logger.info('User %s was created', user.user_id)
-        return SuccessResponse(user.user_id, 'User created successfully', 'n/a').as_json()
+            user.update_password(user_data['password'])
+            user.save(validate=False)
+            app.logger.info('User %s was created', user.user_id)
+            return SuccessResponse(user.user_id, 'User created successfully', 'n/a').as_json()
+        except mongoengine.errors.NotUniqueError as e:
+            found = re.search('"(.+?)"', str(e)).group(1)
+            if found == user.username:
+                return ErrorResponse('Username is registred ', str(e)).as_json()
+            if found == user.email:
+                return ErrorResponse('Email is registred ', str(e)).as_json()
     return ErrorResponse('Error processing request', 'The provided data is not valid').as_json()
