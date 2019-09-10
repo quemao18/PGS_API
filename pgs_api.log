@@ -12,3 +12,4 @@ Company 96b78464-a642-42d3-9ac1-c7207c1392bd was created
 User c8762d8e-9112-402d-b366-fb13d719360a was created
 Updated fields for user_id: f138f608-7ad6-445f-942a-02e72a3cda06
 Authenticated user with correct credentials user: admin@pgs.com
+A retrieval attempt of non-existing user occurred: baf1c228-8850-4bb2-a20c-62a83e413cf7
