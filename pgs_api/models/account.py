@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField
+from mongoengine import Document, StringField, DateTimeField, IntField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -17,7 +17,7 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, username, name, last_name, email, gender, dob, country, smoker, surgical, health): 
+    def __init__(self, id, username, name, last_name, email, gender, dob, country, smoker, surgical, health, user_type): 
         self.id = id
         self.username = username
         self.name = name
@@ -29,7 +29,7 @@ class SessionIdentity:
         self.smoker = smoker
         self.surgical = surgical
         self.health = health
-        
+        self.user_type = user_type
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -77,11 +77,13 @@ class User(Document):
 
     country = StringField(max_length=120, required=True)
 
-    smoker = StringField(max_length=10, required=True)
+    smoker = StringField(max_length=10, required=False)
 
     surgical = StringField(max_length=40, required=False)
 
     health = StringField(max_length=120, required=False)
+
+    user_type = IntField(max_length=2, required=True, default=4)
 
     password = StringField(max_length=256, required=False)
 
@@ -103,25 +105,6 @@ class User(Document):
     # Creates a string representation of a user
     def __str__(self):
         return "User(username='%s')" % self.username
-
-    # --------------------------------------------------------------------------
-    # METHOD STR
-    # --------------------------------------------------------------------------
-    def as_json(self):
-        """The method return as json."""
-        return jsonify({
-            "id": self.id,
-            "username": self.username,
-            "name": self.name,
-            "last_name": self.last_name,
-            "email": self.email,
-            "gender": self.gender,
-            "dob": self.dob,
-            "country": self.country,
-            "smoker": self.smoker, 
-            "surgical": self.surgical,
-            "health": self.health
-        })
 
     # --------------------------------------------------------------------------
     # METHOD IS_AUTHORIZED_TO
@@ -198,7 +181,8 @@ class User(Document):
                                self.country,
                                self.smoker, 
                                self.surgical, 
-                               self.health)
+                               self.health, 
+                               self.user_type)
 
 # ------------------------------------------------------------------------------
 # CLASS USER SERVICE
