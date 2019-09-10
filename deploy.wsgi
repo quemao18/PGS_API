@@ -3,4 +3,4 @@ import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
 
-from garnet_api import app as application
+from pgs_api import app as application

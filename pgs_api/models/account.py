@@ -17,12 +17,19 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, username, name, last_name, email): 
+    def __init__(self, id, username, name, last_name, email, gender, dob, country, smoker, surgical, health): 
         self.id = id
         self.username = username
         self.name = name
         self.last_name = last_name
         self.email = email
+        self.gender = gender
+        self.dob = dob
+        self.country = country
+        self.smoker = smoker
+        self.surgical = surgical
+        self.health = health
+        
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -34,7 +41,13 @@ class SessionIdentity:
             "username": self.username,
             "name": self.name,
             "last_name": self.last_name,
-            "email": self.email
+            "email": self.email,
+            "gender": self.gender,
+            "dob": self.dob,
+            "country": self.country,
+            "smoker": self.smoker,
+            "surgical": self.surgical,
+            "health": self.health
         })
 
 
@@ -52,13 +65,25 @@ class User(Document):
 
     name = StringField(max_length=120, required=True)
 
-    last_name = StringField(max_length=120, required=True)
+    last_name = StringField(max_length=120, required=False)
 
     email = StringField(max_length=120, required=True, unique=True)
 
-    username = StringField(max_length=120, required=True, unique=True)
+    username = StringField(max_length=120, required=False, unique=True)
 
-    password = StringField(max_length=256, required=True)
+    gender = StringField(max_length=40, required=True)
+
+    dob = StringField(max_length=120, required=True)
+
+    country = StringField(max_length=120, required=True)
+
+    smoker = StringField(max_length=10, required=True)
+
+    surgical = StringField(max_length=40, required=False)
+
+    health = StringField(max_length=120, required=False)
+
+    password = StringField(max_length=256, required=False)
 
     salt = StringField(max_length=17, required=True, default=gen_salt(17))
 
@@ -78,6 +103,25 @@ class User(Document):
     # Creates a string representation of a user
     def __str__(self):
         return "User(username='%s')" % self.username
+
+    # --------------------------------------------------------------------------
+    # METHOD STR
+    # --------------------------------------------------------------------------
+    def as_json(self):
+        """The method return as json."""
+        return jsonify({
+            "id": self.id,
+            "username": self.username,
+            "name": self.name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "gender": self.gender,
+            "dob": self.dob,
+            "country": self.country,
+            "smoker": self.smoker, 
+            "surgical": self.surgical,
+            "health": self.health
+        })
 
     # --------------------------------------------------------------------------
     # METHOD IS_AUTHORIZED_TO
@@ -114,6 +158,24 @@ class User(Document):
         return True
 
     # --------------------------------------------------------------------------
+    # METHOD UPDATE QUESTION SURGICAL
+    # --------------------------------------------------------------------------
+    def update_surgical(self, data):
+        """The method for update surgical"""
+        self.surgical = data
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD UPDATE QUESTION HEALTH
+    # --------------------------------------------------------------------------
+    def update_health(self, data):
+        """The method for update health"""
+        self.health = data
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
     # METHOD AUTHENTICATE
     # --------------------------------------------------------------------------
     def authenticate(self, password):
@@ -130,8 +192,13 @@ class User(Document):
                                self.username,
                                self.name,
                                self.last_name,
-                               self.email)
-
+                               self.email, 
+                               self.gender,
+                               self.dob,
+                               self.country,
+                               self.smoker, 
+                               self.surgical, 
+                               self.health)
 
 # ------------------------------------------------------------------------------
 # CLASS USER SERVICE
@@ -149,3 +216,5 @@ class UserService:
         if user:
             return user
         return None
+
+

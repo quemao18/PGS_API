@@ -81,7 +81,7 @@
       <find>satellite</find>
     </findStrings>
     <replaceStrings>
-      <replace>garnet_api</replace>
+      <replace>pgs_api</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">

@@ -1,8 +1,8 @@
 from pgs_api import app
-from flask import request
+from flask import request, jsonify
 from pgs_api.models.account import User
 from pgs_api.models.account import UserService
-from pgs_api.security.idam import find_user
+from pgs_api.security.idam import find_user, all_users
 from pgs_api.extensions.jsonp import enable_jsonp
 from pgs_api.extensions.error_handling import ErrorResponse
 from pgs_api.extensions.error_handling import SuccessResponse
@@ -10,13 +10,14 @@ from flask_jwt import jwt_required, current_identity
 import uuid
 import mongoengine
 import re
+import pymongo
 
 # --------------------------------------------------------------------------
 # GET ACCOUNT
 # --------------------------------------------------------------------------
 # Gets the account information associated with current session in the system
 @app.route('/api/v1/account', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 @enable_jsonp
 def get_account():
     return current_identity.as_json()
@@ -34,6 +35,18 @@ def get_account_by_id(user_id):
         return identity.as_json()
     return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
 
+
+# --------------------------------------------------------------------------
+# GET: /account/users
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/users', methods=['GET'])
+#@jwt_required()
+@enable_jsonp
+def get_all_users():
+    users = all_users()
+    if users: 
+        return jsonify(users) 
+    return ErrorResponse('Users not found', 'Users collections is empty').as_json()
 
 # --------------------------------------------------------------------------
 # PUT: /account/<uid>/password
@@ -78,9 +91,28 @@ def update_account_email(user_id):
 
 
 # --------------------------------------------------------------------------
+# PUT: /account/<uid>/fields
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<user_id>/fields', methods=['PUT'])
+#@jwt_required()
+@enable_jsonp
+def update_account_fields(user_id):
+    try:
+        fields = request.get_json()
+        user_service = UserService(user_id)
+        user = user_service.get_user()
+        if user.update_surgical(fields['surgical']) and user.update_health(fields['health']):
+            app.logger.info('Updated fields for user_id: %s', user_id)
+            return SuccessResponse('Success', 'Question update success', 'FIELDS_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for user: %s', user_id)
+        return ErrorResponse('Could not update fields', 'Invalid data provided').as_json()
+
+
+# --------------------------------------------------------------------------
 # POST: /account
 # --------------------------------------------------------------------------
-# Registers a new user in the system using garnet_api Identity Sub-System
+# Registers a new user in the system using pgs_api Identity Sub-System
 @app.route('/api/v1/account', methods=['POST'])
 @enable_jsonp
 def post_account():
@@ -93,6 +125,10 @@ def post_account():
             last_name=user_data['last_name'],
             email=user_data['email'],
             username=user_data['username'],
+            gender=user_data['gender'],
+            dob=user_data['dob'],
+            country=user_data['country'],
+            smoker=user_data['smoker'],
             password=None
             )
             user.update_password(user_data['password'])

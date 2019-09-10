@@ -3,6 +3,7 @@
 from pgs_api import app
 from pgs_api.models.account import User
 from mongoengine import *
+import json
 
 # ------------------------------------------------------------------------------
 # IDENTITY AND ACCESS MANAGEMENT MODULE
@@ -59,3 +60,10 @@ def find_user(user_id):
     except MultipleObjectsReturned:
         app.logger.error('The username has more than 1 match in database. Urgent revision required. ' + user_id)
     return None
+
+# ------------------------------------------------------------------------------
+# ALL USERS
+# ------------------------------------------------------------------------------
+def all_users():
+    users = User.objects.all()
+    return users

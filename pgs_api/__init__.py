@@ -23,7 +23,7 @@ app.debug = True
 # SETUP LOGGING
 # ------------------------------------------------------------------------------
 
-handler = RotatingFileHandler('garnet_api.log', maxBytes=10000, backupCount=1)
+handler = RotatingFileHandler('pgs_api.log', maxBytes=10000, backupCount=1)
 handler.setLevel(logging.INFO)
 app.logger.addHandler(handler)
 
@@ -37,7 +37,7 @@ db = MongoEngine(app)
 # SETUP JWT AUTHENTICATION
 # ------------------------------------------------------------------------------
 
-# Import all garnet_api controller files
+# Import all pgs_api controller files
 from pgs_api.controllers import *
 from pgs_api.security import idam
 

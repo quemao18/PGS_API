@@ -47,12 +47,12 @@ requests without the need of enabling CORS.
 Clone the repository in your local system:
 
 ````shell
-$ git clone https://github.com/OneTesseractInMultiverse/Garnet.git
+$ git clone
 ````
 
 Install dependencies:
 ````shell
-$ cd Garnet
+$ cd project
 $ pip install -r requirements.txt
 ````
 
@@ -68,7 +68,7 @@ $ python run.py
 Verify the application is running in your browser by navigating to:
 
 ````
-http://127.0.0.1:8080
+http://127.0.0.1:5000
 ````
 
 ## Using Garnet
