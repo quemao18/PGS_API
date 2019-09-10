@@ -13,3 +13,14 @@ User c8762d8e-9112-402d-b366-fb13d719360a was created
 Updated fields for user_id: f138f608-7ad6-445f-942a-02e72a3cda06
 Authenticated user with correct credentials user: admin@pgs.com
 A retrieval attempt of non-existing user occurred: baf1c228-8850-4bb2-a20c-62a83e413cf7
+Plan c51d89fb-f370-4650-bb81-f149d9b819e2 was created
+Plan 415f75a3-c1d9-48df-931d-411cbd467e36 was created
+Plan fbb65d86-dcb8-4664-8850-aab15e03aa2c was created
+A retrieval attempt of non-existing user occurred: users
+Plan 90bd6fac-14dd-41d6-8112-1d16d45c00c1 was created
+Plan c4b4789c-791e-44b4-9e5e-96f385cfaafe was created
+Plan dbc487a2-1c58-429c-b259-cd6a61e3aa89 was created
+[<Plan: Plan(name='plan 1')>, <Plan: Plan(name='plan 2')>, <Plan: Plan(name='plan 3')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>]
+<Response 2066 bytes [200 OK]>
+[<Plan: Plan(name='plan 1')>, <Plan: Plan(name='plan 2')>, <Plan: Plan(name='plan 3')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>]
+Plan 6c782c34-31e1-4148-90b1-a9f8d703c326 was created

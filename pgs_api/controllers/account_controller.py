@@ -39,7 +39,7 @@ def get_account_by_id(user_id):
 # --------------------------------------------------------------------------
 # GET: /account/users
 # --------------------------------------------------------------------------
-@app.route('/api/v1/account/users', methods=['GET'])
+@app.route('/api/v1/account/accounts', methods=['GET'])
 #@jwt_required()
 @enable_jsonp
 def get_all_users():

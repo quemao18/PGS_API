@@ -23,16 +23,31 @@ def get_company():
 
 
 # --------------------------------------------------------------------------
-# GET: /account/<uid>
+# GET: /company/<uid>
 # --------------------------------------------------------------------------
-@app.route('/api/v1/company/<user_id>', methods=['GET'])
-#@jwt_required()
+@app.route('/api/v1/company/<company_id>', methods=['GET'])
+@jwt_required()
 @enable_jsonp
-def get_company_by_id(user_id):
-    user_service = CompanyService(user_id)
-    user = user_service.get_company()
+def get_company_by_id(company_id):
+    service = CompanyService(company_id)
+    user = service.get_company()
     if user:
         return jsonify(user)
+    return ErrorResponse('Company not found', 'The provided company_id is not valid').as_json()
+
+
+
+# --------------------------------------------------------------------------
+# GET: /company/<uid>/plans
+# --------------------------------------------------------------------------
+@app.route('/api/v1/company/<company_id>/plans', methods=['GET'])
+@jwt_required()
+@enable_jsonp
+def get_company_plans_by_id(company_id):
+    service = CompanyService(company_id)
+    data = service.get_company_plans()
+    if data:
+        return jsonify(data)
     return ErrorResponse('Company not found', 'The provided company_id is not valid').as_json()
 
 
@@ -43,8 +58,8 @@ def get_company_by_id(user_id):
 @jwt_required()
 @enable_jsonp
 def get_all_companies():
-    user_service = CompanyService
-    users = user_service.get_companies()
+    service = CompanyService
+    users = service.get_companies()
     if users: 
         return jsonify(users) 
     return ErrorResponse('Companies not found', 'Companies collections is empty').as_json()
@@ -52,19 +67,19 @@ def get_all_companies():
 # --------------------------------------------------------------------------
 # PUT: /account/<uid>/email
 # --------------------------------------------------------------------------
-@app.route('/api/v1/company/<user_id>/email', methods=['PUT'])
+@app.route('/api/v1/company/<company_id>/email', methods=['PUT'])
 @jwt_required()
 @enable_jsonp
-def update_company_email(user_id):
+def update_company_email(company_id):
     try:
         email_data = request.get_json()
-        user_service = CompanyService(user_id)
-        user = user_service.get_company()
+        service = CompanyService(company_id)
+        user = service.get_company()
         if user.update_email(email_data['email']):
-            app.logger.info('Updated email for user_id: %s', user_id)
+            app.logger.info('Updated email for company_id: %s', company_id)
             return SuccessResponse('Success', 'Email updated successfully', 'EMAIL_OK').as_json()
     except:
-        app.logger.error('Invalid json received for user: %s', user_id)
+        app.logger.error('Invalid json received for user: %s', company_id)
         return ErrorResponse('Could not update email', 'Invalid email provided').as_json()
 
 # --------------------------------------------------------------------------
@@ -72,6 +87,7 @@ def update_company_email(user_id):
 # --------------------------------------------------------------------------
 # Registers a new user in the system using pgs_api Identity Sub-System
 @app.route('/api/v1/company', methods=['POST'])
+@jwt_required()
 @enable_jsonp
 def post_company():
     user_data = request.get_json()

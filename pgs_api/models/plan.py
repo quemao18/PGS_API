@@ -1,12 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField
+from mongoengine import Document, StringField, DateTimeField, FloatField, ListField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
 import datetime
-from pgs_api.models.plan import Plan
-
 
 # ------------------------------------------------------------------------------
 # CLASS IDENTITY
@@ -18,11 +16,11 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, logo, description, email): 
+    def __init__(self, id, company_id, name, plan_id, description, price): 
         self.id = id
+        self.plan_id
         self.company_id = company_id
-        self.logo = logo
-        self.email = email
+        self.price = price
         self.name = name
         self.description = description
 
@@ -35,9 +33,8 @@ class SessionIdentity:
         """The method return as json."""
         return jsonify({
             "id": self.id,
+            "plan_id": self.plan_id,
             "company_id": self.company_id,
-            "logo": self.logo,
-            "email": self.email,
             "name": self.name,
             "description": self.description
         })
@@ -47,19 +44,19 @@ class SessionIdentity:
 # CLASS USER
 # ------------------------------------------------------------------------------
 # Represents a User within the Satellite Identity sub-system.
-class Company(Document):
-    """Class Company."""
+class Plan(Document):
+    """Class Plan."""
     # --------------------------------------------------------------------------
-    # COMPANY PROPERTIES
+    # Plan PROPERTIES
     # --------------------------------------------------------------------------
     
+    plan_id = StringField(max_length=40, required=True)
+
     company_id = StringField(max_length=40, required=True)
 
     name = StringField(max_length=120, required=True)
 
-    email = StringField(max_length=120, required=True, unique=True)
-
-    logo = StringField(max_length=40, required=False)
+    price = ListField(max_length=120, required=True)
 
     description = StringField(max_length=120, required=False)
 
@@ -67,8 +64,8 @@ class Company(Document):
 
     meta = {
             'indexes': [
-                'company_id',
-                'email'
+                'plan_id',
+                'company_id'
             ]
         }
 
@@ -77,7 +74,7 @@ class Company(Document):
     # --------------------------------------------------------------------------
     # Creates a string representation of a user
     def __str__(self):
-        return "Company(name='%s')" % self.name
+        return "Plan(name='%s')" % self.name
 
     # --------------------------------------------------------------------------
     # METHOD IS_AUTHORIZED_TO
@@ -89,20 +86,12 @@ class Company(Document):
     # --------------------------------------------------------------------------
     # METHOD UPDATE PASSWORD
     # --------------------------------------------------------------------------
-    def update_password(self, password):
-        """The method for update password"""
-        self.password = compute_hash(password, self.salt)
+    def update_price(self, price):
+        """The method for update price"""
+        self.price = price
         self.save()
         return True
 
-    # --------------------------------------------------------------------------
-    # METHOD UPDATE EMAIL
-    # --------------------------------------------------------------------------
-    def update_email(self, email):
-        """The method for update email"""
-        self.email = email
-        self.save()
-        return True
 
     # --------------------------------------------------------------------------
     # METHOD GET IDENTITY
@@ -110,46 +99,32 @@ class Company(Document):
     def get_identity(self):
         """The method for get identity"""
         return SessionIdentity(self.company_id,
+                               self.plan_id,
                                self.name,
-                               self.email,
                                self.description,
-                               self.logo
+                               self.price
                               )
 
 # ------------------------------------------------------------------------------
-# CLASS USER SERVICE
+# CLASS PLAN SERVICE
 # ------------------------------------------------------------------------------
 # Represents a user service that allows easy management of User objects
 # pylint: disable=too-few-public-methods
-class CompanyService: 
+class PlanService: 
     """The class company service"""
-    def __init__(self, company_id):
-        self.company_id = company_id
+    def __init__(self, plan_id):
+        self.plan_id = plan_id
 
-    def get_company(self):
-        """The method for get company"""
-        data = Company.objects.get(company_id=self.company_id)
-        if data:
-            return data
-        return None
-    
-    def get_company_plans(self):
-        """The method for get company plans"""
-        data = Plan.objects(company_id=self.company_id)
+    def get_plan(self):
+        """The method for get plan"""
+        data = Plan.objects.get(plan_id=self.plan_id)
         if data:
             return data
         return None
 
-    def get_plan_name(self):
-        """The method for get company name plan"""
-        data = Plan.objects(company_id=self.company_id)
-        if data:
-            return data
-        return None
-
-    def get_companies():
+    def get_plans():
         """The method for get companies"""
-        data = Company.objects.all()
+        data = Plan.objects.all()
         if data:
             return data
         return None
