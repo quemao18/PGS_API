@@ -40,7 +40,7 @@ def get_company_by_id(user_id):
 # GET: /account/users
 # --------------------------------------------------------------------------
 @app.route('/api/v1/company/companies', methods=['GET'])
-#@jwt_required()
+@jwt_required()
 @enable_jsonp
 def get_all_companies():
     user_service = CompanyService
@@ -52,7 +52,7 @@ def get_all_companies():
 # --------------------------------------------------------------------------
 # PUT: /account/<uid>/email
 # --------------------------------------------------------------------------
-@app.route('/api/v1/account/<user_id>/email', methods=['PUT'])
+@app.route('/api/v1/company/<user_id>/email', methods=['PUT'])
 @jwt_required()
 @enable_jsonp
 def update_company_email(user_id):
