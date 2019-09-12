@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField, IntField
+from mongoengine import Document, StringField, DateTimeField, IntField, FloatField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -17,8 +17,9 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, username, name, last_name, email, gender, dob, country, smoker, surgical, health, user_type): 
-        self.id = id
+    def __init__(self, user_id, username, name, last_name, email, gender, dob, country, smoker, surgical, health, user_type): 
+        self.id = user_id
+        self.user_id = user_id
         self.username = username
         self.name = name
         self.last_name = last_name
@@ -37,7 +38,7 @@ class SessionIdentity:
     def as_json(self):
         """The method return as json."""
         return jsonify({
-            "id": self.id,
+            "user_id": self.user_id,
             "username": self.username,
             "name": self.name,
             "last_name": self.last_name,
@@ -47,7 +48,8 @@ class SessionIdentity:
             "country": self.country,
             "smoker": self.smoker,
             "surgical": self.surgical,
-            "health": self.health
+            "health": self.health, 
+            "user_type": self.user_type
         })
 
 
@@ -73,7 +75,7 @@ class User(Document):
 
     gender = StringField(max_length=40, required=True)
 
-    dob = StringField(max_length=120, required=True)
+    dob = DateTimeField(max_length=120, required=True)
 
     country = StringField(max_length=120, required=True)
 
@@ -89,13 +91,18 @@ class User(Document):
 
     salt = StringField(max_length=17, required=True, default=gen_salt(17))
 
+    plan_id = StringField(max_length=40, required=False)
+
+    price = FloatField(max_length=120, required=False)
+
     date_modified = DateTimeField(default=datetime.datetime.now)
 
     meta = {
         'indexes': [
             'user_id',
             'username',
-            'email'
+            'email',
+             {'fields': ['$email', "$name"],}
         ]
     }
 
@@ -183,6 +190,25 @@ class User(Document):
                                self.surgical, 
                                self.health, 
                                self.user_type)
+   
+    # --------------------------------------------------------------------------
+    # METHOD update plan user
+    # --------------------------------------------------------------------------
+    def update_plan(self, plan_id):
+        """The method for update health"""
+        self.plan_id = plan_id
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD update plan user
+    # --------------------------------------------------------------------------
+    def update_price(self, price):
+        """The method for update health"""
+        self.price = price
+        self.save()
+        return True
+
 
 # ------------------------------------------------------------------------------
 # CLASS USER SERVICE
@@ -200,5 +226,10 @@ class UserService:
         if user:
             return user
         return None
+
+    def delete_user(self):
+        """The method for delete """
+        user = User.objects.get(user_id=self.user_id).delete()
+        return True
 
 

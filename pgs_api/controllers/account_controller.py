@@ -17,7 +17,7 @@ import pymongo
 # --------------------------------------------------------------------------
 # Gets the account information associated with current session in the system
 @app.route('/api/v1/account', methods=['GET'])
-# @jwt_required()
+@jwt_required()
 @enable_jsonp
 def get_account():
     return current_identity.as_json()
@@ -39,11 +39,15 @@ def get_account_by_id(user_id):
 # --------------------------------------------------------------------------
 # GET: /account/users
 # --------------------------------------------------------------------------
-@app.route('/api/v1/account/accounts', methods=['GET'])
-#@jwt_required()
+@app.route('/api/v1/account/accounts/', defaults={'term':''}, methods=['GET'])
+@app.route('/api/v1/account/accounts/<term>', methods=['GET'])
+@jwt_required()
 @enable_jsonp
-def get_all_users():
-    users = all_users()
+def get_all_users(term):
+    #term = request.get_json()
+    app.logger.info('Updated email for user_id: %s', term)
+    users = all_users(term)
+   
     if users: 
         return jsonify(users) 
     return ErrorResponse('Users not found', 'Users collections is empty').as_json()
@@ -91,6 +95,26 @@ def update_account_email(user_id):
 
 
 # --------------------------------------------------------------------------
+# PUT: /account/<uid>/plan
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<user_id>/plan', methods=['PUT'])
+@jwt_required()
+@enable_jsonp
+def update_account_plan(user_id):
+    try:
+        data = request.get_json()
+        user_service = UserService(user_id)
+        user = user_service.get_user()
+        if user.update_plan(data['plan_id']) and user.update_price(data['price']):
+            app.logger.info('Updated plan for user_id: %s', user_id)
+            return SuccessResponse('Success', 'Plan updated successfully', 'PLAN_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for user: %s', user_id)
+        return ErrorResponse('Could not update plan', 'Invalid plan_id provided').as_json()
+
+
+
+# --------------------------------------------------------------------------
 # PUT: /account/<uid>/fields
 # --------------------------------------------------------------------------
 @app.route('/api/v1/account/<user_id>/fields', methods=['PUT'])
@@ -129,7 +153,8 @@ def post_account():
             dob=user_data['dob'],
             country=user_data['country'],
             smoker=user_data['smoker'],
-            password=None
+            password=None, 
+            user_type=user_data['user_type']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)
@@ -142,3 +167,20 @@ def post_account():
             if found == user.email:
                 return ErrorResponse('Email is registred ', str(e)).as_json()
     return ErrorResponse('Error processing request', 'The provided data is not valid').as_json()
+
+# --------------------------------------------------------------------------
+# DELETE: /account/<uid>/email
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<user_id>', methods=['DELETE'])
+@jwt_required()
+@enable_jsonp
+def delete_account(user_id):
+    try:
+        service = UserService(user_id)
+        x = service.delete_user()
+        if x:
+            app.logger.info('Delete user_id: %s', user_id)
+            return SuccessResponse('Success', 'Delete successfully', 'DELETE_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for user: %s', user_id)
+        return ErrorResponse('Could not delete user_id', 'Invalid user_id provided').as_json()

@@ -1,28 +1,132 @@
-User 06675ced-c684-4021-b958-4d0973e483a5 was created
-User e0fa7523-e1c2-4ccb-8be7-d4bb807e5b83 was created
-Authenticated user with correct credentials user: your_email@example.com10
-User a43b2464-b29c-4bca-83f9-40cdfd63f6b1 was created
-Company d087ae17-8c1c-43a9-81fc-b858777b515a was created
-Company 5c15808c-fd73-4a0e-aee2-3a6e027fb876 was created
-Company f4fdca6f-0105-4d8f-aec1-e54e51de813f was created
-Company e6b89791-1e44-4d68-8736-bf171f6acb27 was created
-Company 2b64a89b-1400-4e52-abfa-30653bb8f427 was created
-Company 8af9ee1c-bf73-43e3-891b-31992749ee93 was created
-Company 96b78464-a642-42d3-9ac1-c7207c1392bd was created
-User c8762d8e-9112-402d-b366-fb13d719360a was created
-Updated fields for user_id: f138f608-7ad6-445f-942a-02e72a3cda06
-Authenticated user with correct credentials user: admin@pgs.com
-A retrieval attempt of non-existing user occurred: baf1c228-8850-4bb2-a20c-62a83e413cf7
-Plan c51d89fb-f370-4650-bb81-f149d9b819e2 was created
-Plan 415f75a3-c1d9-48df-931d-411cbd467e36 was created
-Plan fbb65d86-dcb8-4664-8850-aab15e03aa2c was created
-A retrieval attempt of non-existing user occurred: users
-Plan 90bd6fac-14dd-41d6-8112-1d16d45c00c1 was created
-Plan c4b4789c-791e-44b4-9e5e-96f385cfaafe was created
-Plan dbc487a2-1c58-429c-b259-cd6a61e3aa89 was created
-[<Plan: Plan(name='plan 1')>, <Plan: Plan(name='plan 2')>, <Plan: Plan(name='plan 3')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>]
-<Response 2066 bytes [200 OK]>
-[<Plan: Plan(name='plan 1')>, <Plan: Plan(name='plan 2')>, <Plan: Plan(name='plan 3')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>, <Plan: Plan(name='plan 4')>]
-Plan 6c782c34-31e1-4148-90b1-a9f8d703c326 was created
-Plan 8559431f-9b8f-4394-98db-34c072105310 was created
-Plan b5b58e30-c5d0-42fc-aadf-be3f323b5e8b was created
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Delete user_id: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+User User(username='usuario5@gmail.com')
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+Invalid json received for user: 36aa9643-cac1-4e80-9b63-e83db6df6d0b
+User f57603c8-7436-402f-8897-91dee8442b00 was created
+User None
+Invalid json received for user: f57603c8-7436-402f-8897-91dee8442b00
+Invalid json received for user: f57603c8-7436-402f-8897-91dee8442b00
+User 81c7e523-bd03-41d8-adf4-2bb11d8698b7 was created
+Invalid json received for user: f57603c8-7436-402f-8897-91dee8442b00
+User None
+Invalid json received for user: 81c7e523-bd03-41d8-adf4-2bb11d8698b7
+User 53211ac5-85ad-475f-afbb-f020b576f468 was created
+Invalid json received for user: 53211ac5-85ad-475f-afbb-f020b576f468
+User a15e64f6-e81d-47b7-8cb0-c7f4a9d28184 was created
+Delete user_id: a15e64f6-e81d-47b7-8cb0-c7f4a9d28184
+Authenticated user with correct credentials user: admin3@pgs.com
+User 87bd337b-9991-42e6-9fda-9e69e312b05b was created
+Updated email for user_id: 
+Delete user_id: 87bd337b-9991-42e6-9fda-9e69e312b05b
+Updated email for user_id: 
+Delete user_id: e0fa7523-e1c2-4ccb-8be7-d4bb807e5b83
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+A retrieval attempt of non-existing user occurred: c8762d8e-9112-402d-b366-fb13d719360a
+Invalid json received for user: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Updated plan for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated plan for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated plan for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Updated plan for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Updated plan for user_id: f138f608-7ad6-445f-942a-02e72a3cda06
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated fields for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated email for user_id: 
+Updated email for user_id: 
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated fields for user_id: c6d9b52a-89c2-4fa5-bd5a-9a870c147e54
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Authenticated user with correct credentials user: admin3@pgs.com
+Updated email for user_id: 
+Updated email for user_id: 

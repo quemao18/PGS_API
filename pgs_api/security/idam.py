@@ -64,6 +64,9 @@ def find_user(user_id):
 # ------------------------------------------------------------------------------
 # ALL USERS
 # ------------------------------------------------------------------------------
-def all_users():
-    users = User.objects.all()
+def all_users(term):
+    if term=='':
+        users = User.objects.all()
+    else:
+        users = User.objects.search_text(term).limit(100)
     return users
