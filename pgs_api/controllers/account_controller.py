@@ -44,10 +44,7 @@ def get_account_by_id(user_id):
 @jwt_required()
 @enable_jsonp
 def get_all_users(term):
-    #term = request.get_json()
-    app.logger.info('Updated email for user_id: %s', term)
     users = all_users(term)
-   
     if users: 
         return jsonify(users) 
     return ErrorResponse('Users not found', 'Users collections is empty').as_json()

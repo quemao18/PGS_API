@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField
+from mongoengine import Document, StringField, DateTimeField, BooleanField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -59,7 +59,9 @@ class Company(Document):
 
     email = StringField(max_length=120, required=True, unique=True)
 
-    logo = StringField(max_length=40, required=False)
+    status = BooleanField(max_length=5, required=False)
+
+    logo = StringField(max_length=250, required=False)
 
     description = StringField(max_length=120, required=False)
 
@@ -68,7 +70,8 @@ class Company(Document):
     meta = {
             'indexes': [
                 'company_id',
-                'email'
+                'email',
+                {'fields': ['$email', "$name"],}
             ]
         }
 
@@ -101,6 +104,41 @@ class Company(Document):
     def update_email(self, email):
         """The method for update email"""
         self.email = email
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD UPDATE LOGO URL
+    # --------------------------------------------------------------------------
+    def update_logo_url(self, url):
+        """The method for update logo url"""
+        self.logo = url
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD UPDATE COMPANY
+    # --------------------------------------------------------------------------
+    def update_company(self, data):
+        """The method for update company"""
+        self.email = data['email']
+        self.name = data['name']
+        self.logo = data['logo']
+        self.description = data['description']
+        self.date_modified = datetime.datetime.now
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD UPDATE STATUS
+    # --------------------------------------------------------------------------
+    def update_status(self):
+        """The method for update email"""
+        if self.status:
+            new_status = False
+        else:
+            new_status = True
+        self.status = new_status
         self.save()
         return True
 
@@ -147,11 +185,12 @@ class CompanyService:
             return data
         return None
 
-    def get_companies():
+    def get_companies(term):
         """The method for get companies"""
-        data = Company.objects.all()
-        if data:
-            return data
-        return None
+        if term=='':
+            data = Company.objects.all()
+        else:
+            data = Company.objects.search_text(term).limit(100)
+        return data
 
 

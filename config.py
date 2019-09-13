@@ -19,6 +19,8 @@ BCRYPT_LEVEL = 12
 # ----------------------------------------------------------------
 JWT_AUTH_URL_RULE = '/api/v1/auth'
 JWT_EXPIRATION_DELTA = datetime.timedelta(3200) # Set the token validity
+#UPLOAD_FOLDER = 'D:\Proyectos\pgs_api\public\img'
+UPLOAD_FOLDER = 'D:\Proyectos\pgs_dashboard\src\\assets\img\logos'
 #
 # ----------------------------------------------------------------
 # ----------------------------------------------------------------
