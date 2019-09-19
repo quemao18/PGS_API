@@ -16,15 +16,10 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, plan_id, description, price): 
+    def __init__(self, name, country_id): 
         self.id = id
-        self.plan_id
-        self.company_id = company_id
-        self.price = price
+        self.country_id
         self.name = name
-        self.description = description
-
-        
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -33,10 +28,8 @@ class SessionIdentity:
         """The method return as json."""
         return jsonify({
             "id": self.id,
-            "plan_id": self.plan_id,
-            "company_id": self.company_id,
+            "country_id": self.plan_id,
             "name": self.name,
-            "description": self.description
         })
 
 
@@ -44,21 +37,15 @@ class SessionIdentity:
 # CLASS USER
 # ------------------------------------------------------------------------------
 # Represents a User within the Satellite Identity sub-system.
-class Plan(Document):
+class Country(Document):
     """Class Plan."""
     # --------------------------------------------------------------------------
     # Plan PROPERTIES
     # --------------------------------------------------------------------------
     
-    plan_id = StringField(max_length=40, required=True)
+    country_id = StringField(max_length=40, required=True)
 
-    company_id = StringField(max_length=40, required=True)
-
-    name = StringField(max_length=120, required=True)
-
-    price = ListField(required=True)
-
-    description = StringField(max_length=120, required=False)
+    name = StringField(max_length=120, required=True, unique=True)
 
     status = BooleanField(max_length=5, required=False, default=True)
 
@@ -66,8 +53,7 @@ class Plan(Document):
 
     meta = {
             'indexes': [
-                'plan_id',
-                'company_id'
+                'country_id',
             ]
         }
 
@@ -76,7 +62,7 @@ class Plan(Document):
     # --------------------------------------------------------------------------
     # Creates a string representation of a user
     def __str__(self):
-        return "Plan(name='%s')" % self.name
+        return "Country(name='%s')" % self.name
 
     # --------------------------------------------------------------------------
     # METHOD IS_AUTHORIZED_TO
@@ -84,15 +70,6 @@ class Plan(Document):
     def is_authorized_to(self, action):
         """The method is authorized"""
         return action in self.claims
-
-    # --------------------------------------------------------------------------
-    # METHOD UPDATE PASSWORD
-    # --------------------------------------------------------------------------
-    def update_price(self, price):
-        """The method for update price"""
-        self.price = price
-        self.save()
-        return True
 
     # --------------------------------------------------------------------------
     # METHOD UPDATE STATUS
@@ -110,11 +87,9 @@ class Plan(Document):
     # --------------------------------------------------------------------------
     # METHOD UPDATE PLAN
     # --------------------------------------------------------------------------
-    def update_plan(self, data):
+    def update_country(self, data):
         """The method for update plan"""
         self.name = data['name']
-        self.description = data['description']
-        self.price = data['price']
         self.date_modified = datetime.datetime.now
         self.save()
         return True
@@ -125,11 +100,8 @@ class Plan(Document):
     # --------------------------------------------------------------------------
     def get_identity(self):
         """The method for get identity"""
-        return SessionIdentity(self.company_id,
-                               self.plan_id,
+        return SessionIdentity(self.country_id,
                                self.name,
-                               self.description,
-                               self.price
                               )
 
 # ------------------------------------------------------------------------------
@@ -137,28 +109,28 @@ class Plan(Document):
 # ------------------------------------------------------------------------------
 # Represents a user service that allows easy management of User objects
 # pylint: disable=too-few-public-methods
-class PlanService: 
+class CountryService: 
     """The class plan service"""
-    def __init__(self, plan_id):
-        self.plan_id = plan_id
+    def __init__(self, country_id):
+        self.country_id = country_id
 
-    def get_plan(self):
+    def get_country(self):
         """The method for get plan"""
-        data = Plan.objects.get(plan_id=self.plan_id)
+        data = Country.objects.get(country_id=self.country_id)
         if data:
             return data
         return None
 
-    def get_plans():
+    def get_countries():
         """The method for get plans"""
-        data = Plan.objects.all()
+        data = Country.objects.all()
         if data:
             return data
         return None
 
     def delete(self):
         """The method for delete """
-        plan = Plan.objects.get(plan_id=self.plan_id).delete()
+        plan = Country.objects.get(country_id=self.country_id).delete()
         return True
 
 

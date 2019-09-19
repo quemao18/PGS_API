@@ -59,11 +59,11 @@ class Company(Document):
 
     email = StringField(max_length=120, required=True, unique=True)
 
-    status = BooleanField(max_length=5, required=False)
+    status = BooleanField(max_length=5, required=False, default=True)
 
-    logo = StringField(max_length=250, required=False)
+    logo = StringField(max_length=250, required=False, default="")
 
-    description = StringField(max_length=120, required=False)
+    description = StringField(max_length=250, required=False, default="")
 
     date_modified = DateTimeField(default=datetime.datetime.now)
 
@@ -106,6 +106,15 @@ class Company(Document):
         self.email = email
         self.save()
         return True
+
+    # --------------------------------------------------------------------------
+    # METHOD CHECK EMAIL
+    # --------------------------------------------------------------------------
+    def check_email(self, email, company_id):
+        """The method for check email"""
+        if self.email == email and self.company_id!=company_id:
+            return True
+        return False
 
     # --------------------------------------------------------------------------
     # METHOD UPDATE LOGO URL
@@ -170,6 +179,13 @@ class CompanyService:
         if data:
             return data
         return None
+
+    def get_company_email(self):
+        """The method for get company"""
+        data = Company.objects.get(email=self.email)
+        if data:
+            return False
+        return True
     
     def get_company_plans(self):
         """The method for get company plans"""
@@ -188,9 +204,14 @@ class CompanyService:
     def get_companies(term):
         """The method for get companies"""
         if term=='':
-            data = Company.objects.all()
+            data = Company.objects.all().order_by('-date_modified')
         else:
-            data = Company.objects.search_text(term).limit(100)
+            data = Company.objects.search_text(term).order_by('-date_modified').limit(100)
         return data
 
+
+    def delete(self):
+        """The method for delete """
+        user = Company.objects.get(company_id=self.company_id).delete()
+        return True
 

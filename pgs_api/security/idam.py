@@ -66,7 +66,7 @@ def find_user(user_id):
 # ------------------------------------------------------------------------------
 def all_users(term):
     if term=='':
-        users = User.objects.all()
+        users = User.objects.all().order_by('-date_modified')
     else:
-        users = User.objects.search_text(term).limit(100)
+        users = User.objects.search_text(term).order_by('-date_modified').limit(100)
     return users

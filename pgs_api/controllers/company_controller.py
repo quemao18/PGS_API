@@ -96,9 +96,11 @@ def update_company_all(company_id):
         data = request.get_json()
         service = CompanyService(company_id)
         user = service.get_company()
+        if user.check_email(data['email'], company_id):
+            return ErrorResponse('Email is registred ', 'Email is registred' ).as_json()
         if user.update_company(data):
             app.logger.info('Updated company_id: %s', company_id)
-            return SuccessResponse('Success', 'Updated successfully', 'EMAIL_OK').as_json()
+            return SuccessResponse('Success', 'Updated successfully', 'UPDATE_OK').as_json()
     except:
         app.logger.error('Invalid json received for user: %s', company_id)
         return ErrorResponse('Could not update', 'Invalid data provided').as_json()
@@ -167,3 +169,20 @@ def post_company():
             if found == user.email:
                 return ErrorResponse('Email is registred ', str(e)).as_json()
     return ErrorResponse('Error processing request', 'The provided data is not valid').as_json()
+
+# --------------------------------------------------------------------------
+# DELETE: /company/<uid>
+# --------------------------------------------------------------------------
+@app.route('/api/v1/company/<company_id>', methods=['DELETE'])
+@jwt_required()
+@enable_jsonp
+def delete_company(company_id):
+    try:
+        service = CompanyService(company_id)
+        x = service.delete()
+        if x:
+            app.logger.info('Delete company_id: %s', company_id)
+            return SuccessResponse('Success', 'Delete successfully', 'DELETE_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for company: %s', company_id)
+        return ErrorResponse('Could not delete company_id', 'Invalid company_id provided').as_json()
