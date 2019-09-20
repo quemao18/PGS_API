@@ -54,6 +54,7 @@ class Country(Document):
     meta = {
             'indexes': [
                 'country_id',
+                 {'fields': ["$name"],}
             ]
         }
 
@@ -72,19 +73,6 @@ class Country(Document):
         return action in self.claims
 
     # --------------------------------------------------------------------------
-    # METHOD UPDATE STATUS
-    # --------------------------------------------------------------------------
-    def update_status(self):
-        """The method for update email"""
-        if self.status:
-            new_status = False
-        else:
-            new_status = True
-        self.status = new_status
-        self.save()
-        return True
-
-    # --------------------------------------------------------------------------
     # METHOD UPDATE PLAN
     # --------------------------------------------------------------------------
     def update_country(self, data):
@@ -94,6 +82,18 @@ class Country(Document):
         self.save()
         return True
 
+    # --------------------------------------------------------------------------
+    # METHOD UPDATE STATUS
+    # --------------------------------------------------------------------------
+    def update_status(self):
+        """The method for update status"""
+        if self.status:
+            new_status = False
+        else:
+            new_status = True
+        self.status = new_status
+        self.save()
+        return True
 
     # --------------------------------------------------------------------------
     # METHOD GET IDENTITY
@@ -121,12 +121,13 @@ class CountryService:
             return data
         return None
 
-    def get_countries():
-        """The method for get plans"""
-        data = Country.objects.all()
-        if data:
-            return data
-        return None
+    def get_countries(term):
+        """The method for get companies"""
+        if term=='':
+            data = Country.objects.all().order_by('name')
+        else:
+            data = Country.objects.search_text(term).order_by('name').limit(100)
+        return data
 
     def delete(self):
         """The method for delete """
