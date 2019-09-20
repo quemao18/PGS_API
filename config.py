@@ -32,3 +32,6 @@ MONGODB_HOST = '127.0.0.1'
 MONGODB_PORT = 27017 #port here
 MONGODB_USERNAME = ''
 MONGODB_PASSWORD = ''
+
+KEY_SSL = "/etc/letsencrypt/live/novemapp.com/privkey.pem"
+CERT_SSL = "/etc/letsencrypt/live/novemapp.com/fullchain.pem"
