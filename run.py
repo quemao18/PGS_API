@@ -4,8 +4,7 @@
 import os
 from pgs_api import app
 import ssl
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import struct
+
 import socket
 
 """
@@ -18,8 +17,8 @@ basic and extensible identity model.
 __author__ = "Alejandro Toba (alejandro.toba@gmail.com)"
 __version__ = "1.0"
 
-KEY_SSL = "key.pem"
-CERT_SSL = "cert.pem"
+KEY_SSL = "cert.key"
+CERT_SSL = "cert.crt"
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
@@ -27,7 +26,7 @@ if __name__ == '__main__':
     host_name = socket.gethostname()
     #print(host_name)
     
-    if host_name == 'BEELZEBUB':
-        app.run('0.0.0.0', port)
+    #if host_name == 'BEELZEBUB':
+    #    app.run('0.0.0.0', port)
     app.run(port = port, host='0.0.0.0', debug=True, use_reloader=True, ssl_context=(CERT_SSL,KEY_SSL))
 
