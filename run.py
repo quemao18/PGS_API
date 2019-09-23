@@ -17,8 +17,8 @@ basic and extensible identity model.
 __author__ = "Alejandro Toba (alejandro.toba@gmail.com)"
 __version__ = "1.0"
 
-KEY_SSL = "cert.key"
-CERT_SSL = "cert.crt"
+KEY_SSL = "pgs_nov9m_com.key"
+CERT_SSL = "pgs_nov9m_com.crt"
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
