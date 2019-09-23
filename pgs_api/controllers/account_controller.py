@@ -163,7 +163,7 @@ def post_account():
             email=user_data['email'],
             username=user_data['username'],
             gender=user_data['gender'],
-            dob=user_data['dob'],
+            age=user_data['age'],
             country_id=user_data['country_id'],
             smoker=user_data['smoker'],
             password=None, 

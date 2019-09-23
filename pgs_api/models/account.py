@@ -18,7 +18,7 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, user_id, username, name, last_name, email, gender, dob, country_id, smoker, surgical, 
+    def __init__(self, user_id, username, name, last_name, email, gender, age, country_id, smoker, surgical, 
     health, user_type, spouse_age, spouse_gender, dependent): 
         self.id = user_id
         self.user_id = user_id
@@ -27,7 +27,7 @@ class SessionIdentity:
         self.last_name = last_name
         self.email = email
         self.gender = gender
-        self.dob = dob
+        self.age = age
         self.country_id = country_id
         self.smoker = smoker
         self.surgical = surgical
@@ -49,7 +49,7 @@ class SessionIdentity:
             "last_name": self.last_name,
             "email": self.email,
             "gender": self.gender,
-            "dob": self.dob,
+            "age": self.age,
             "country_id": self.country_id,
             "smoker": self.smoker,
             "surgical": self.surgical,
@@ -83,7 +83,9 @@ class User(Document):
 
     gender = StringField(max_length=40, required=True)
 
-    dob = DateTimeField(max_length=120, required=True)
+    #dob = DateTimeField(max_length=120, required=False)
+
+    age = IntField(max_length=2, required=True, default = 18)
 
     country_id = StringField(max_length=40, required=True)
 
@@ -200,7 +202,7 @@ class User(Document):
                                self.last_name,
                                self.email, 
                                self.gender,
-                               self.dob,
+                               self.age,
                                self.country_id,
                                self.smoker, 
                                self.surgical, 
