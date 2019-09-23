@@ -17,7 +17,8 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, user_id, username, name, last_name, email, gender, dob, country, smoker, surgical, health, user_type): 
+    def __init__(self, user_id, username, name, last_name, email, gender, dob, country_id, smoker, surgical, 
+    health, user_type, spouse_age, spouse_gender, dependent): 
         self.id = user_id
         self.user_id = user_id
         self.username = username
@@ -26,11 +27,14 @@ class SessionIdentity:
         self.email = email
         self.gender = gender
         self.dob = dob
-        self.country = country
+        self.country_id = country_id
         self.smoker = smoker
         self.surgical = surgical
         self.health = health
         self.user_type = user_type
+        self.spouse_age = spouse_age
+        self.spouse_gender = spouse_gender
+        self.dependent = dependent
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -45,11 +49,14 @@ class SessionIdentity:
             "email": self.email,
             "gender": self.gender,
             "dob": self.dob,
-            "country": self.country,
+            "country_id": self.country_id,
             "smoker": self.smoker,
             "surgical": self.surgical,
             "health": self.health, 
-            "user_type": self.user_type
+            "user_type": self.user_type,
+            "spouse_age": self.spouse_age,
+            "spouse_gender": self.spouse_gender,
+            "dependent": self.dependent
         })
 
 
@@ -67,7 +74,7 @@ class User(Document):
 
     name = StringField(max_length=120, required=True)
 
-    last_name = StringField(max_length=120, required=False)
+    last_name = StringField(max_length=120, required=False, default = '')
 
     email = StringField(max_length=120, required=True, unique=True)
 
@@ -77,13 +84,19 @@ class User(Document):
 
     dob = DateTimeField(max_length=120, required=True)
 
-    country = StringField(max_length=120, required=True)
+    country_id = StringField(max_length=40, required=True)
 
     smoker = StringField(max_length=10, required=False)
 
     surgical = StringField(max_length=40, required=False)
 
     health = StringField(max_length=120, required=False)
+
+    dependent = IntField(max_length=2, required=False, default = 0)
+
+    spouse_age = IntField(max_length=2, required=False, default = 0)
+
+    spouse_gender = StringField(max_length=40, required=False, default = 'none')
 
     user_type = IntField(max_length=2, required=True, default=4)
 
@@ -185,11 +198,14 @@ class User(Document):
                                self.email, 
                                self.gender,
                                self.dob,
-                               self.country,
+                               self.country_id,
                                self.smoker, 
                                self.surgical, 
                                self.health, 
-                               self.user_type)
+                               self.user_type, 
+                               self.spouse_age,
+                               self.spouse_gender, 
+                               self.dependent)
    
     # --------------------------------------------------------------------------
     # METHOD update plan user

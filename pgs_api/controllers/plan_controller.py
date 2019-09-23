@@ -18,7 +18,7 @@ import pymongo
 # --------------------------------------------------------------------------
 # Gets the account information associated with current session in the system
 @app.route('/api/v1/plan', methods=['GET'])
-# @jwt_required()
+@jwt_required()
 @enable_jsonp
 def get_plan():
     return current_identity.as_json()

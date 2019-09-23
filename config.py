@@ -20,7 +20,7 @@ BCRYPT_LEVEL = 12
 JWT_AUTH_URL_RULE = '/api/v1/auth'
 JWT_EXPIRATION_DELTA = datetime.timedelta(3200) # Set the token validity
 #UPLOAD_FOLDER = 'D:\Proyectos\pgs_api\public\img'
-UPLOAD_FOLDER = 'D:\Proyectos\pgs_dashboard\src\\assets\img\logos'
+#UPLOAD_FOLDER = 'D:\Proyectos\pgs_dashboard\src\\assets\img\logos' #se suben a firebase
 #
 # ----------------------------------------------------------------
 # ----------------------------------------------------------------
@@ -33,5 +33,3 @@ MONGODB_PORT = 27017 #port here
 MONGODB_USERNAME = ''
 MONGODB_PASSWORD = ''
 
-KEY_SSL = "/etc/letsencrypt/live/novemapp.com/privkey.pem"
-CERT_SSL = "/etc/letsencrypt/live/novemapp.com/fullchain.pem"

@@ -148,10 +148,13 @@ def post_account():
             username=user_data['username'],
             gender=user_data['gender'],
             dob=user_data['dob'],
-            country=user_data['country'],
+            country_id=user_data['country_id'],
             smoker=user_data['smoker'],
             password=None, 
-            user_type=user_data['user_type']
+            user_type=user_data['user_type'],
+            spouse_age=user_data['spouse_age'],
+            spouse_gender = user_data['spouse_gender'],
+            dependent = user_data['dependent']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)

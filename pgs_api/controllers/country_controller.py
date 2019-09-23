@@ -13,6 +13,23 @@ import re
 import pymongo
 
 # --------------------------------------------------------------------------
+# GET: /country/<uid>
+# --------------------------------------------------------------------------
+@app.route('/api/v1/country/<country_id>', methods=['GET'])
+@jwt_required()
+@enable_jsonp
+def get_country_by_id(country_id):
+    try:
+        service = CountryService(country_id)
+        data = service.get_country()
+        if data:
+            return jsonify(data)
+        return ErrorResponse('Plan not found', 'The provided country_id is not valid').as_json()
+    except:
+        app.logger.error('Invalid json received for plan: %s', country_id)
+        return ErrorResponse('Could not get', 'Invalid data provided').as_json()
+
+# --------------------------------------------------------------------------
 # POST: /country
 # --------------------------------------------------------------------------
 # Registers a new plan in the system using pgs_api Identity Sub-System
