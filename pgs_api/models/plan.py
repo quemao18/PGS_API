@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField, FloatField, ListField, BooleanField
+from mongoengine import Document, StringField, DateTimeField, FloatField, ListField, BooleanField, EmbeddedDocument
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -67,7 +67,8 @@ class Plan(Document):
     meta = {
             'indexes': [
                 'plan_id',
-                'company_id'
+                'company_id',
+               
             ]
         }
 
@@ -160,5 +161,12 @@ class PlanService:
         """The method for delete """
         plan = Plan.objects.get(plan_id=self.plan_id).delete()
         return True
+
+    def get_plans_country():
+        """The method for get plans"""
+        data = Plan.objects.get(country_id= self.country_id)
+        if data:
+            return data
+        return None
 
 

@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField, IntField, FloatField
+from mongoengine import Document, StringField, DateTimeField, IntField, FloatField, EmbeddedDocumentListField, ListField, EmbeddedDocumentField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
 import datetime
+from pgs_api.models.plan import Plan, PlanService
 
 
 # ------------------------------------------------------------------------------
@@ -105,6 +106,8 @@ class User(Document):
     salt = StringField(max_length=17, required=True, default=gen_salt(17))
 
     plan_id = StringField(max_length=40, required=False)
+
+    #plans = ListField(EmbeddedDocumentField('Plan'))
 
     price = FloatField(max_length=120, required=False)
 

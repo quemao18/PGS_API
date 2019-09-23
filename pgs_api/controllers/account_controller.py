@@ -11,6 +11,7 @@ import uuid
 import mongoengine
 import re
 import pymongo
+from pgs_api.models.plan import Plan
 
 # --------------------------------------------------------------------------
 # GET ACCOUNT
@@ -33,6 +34,21 @@ def get_account_by_id(user_id):
     identity = find_user(user_id)
     if identity:
         return identity.as_json()
+    return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
+
+# --------------------------------------------------------------------------
+# GET: /account/<uid>/plans
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<user_id>/plans', methods=['GET'])
+@jwt_required()
+@enable_jsonp
+def get_plans_by_user_id(user_id):
+    user_service = UserService(user_id)
+    usr = user_service.get_user()
+    plans = Plan.objects(__raw__={'price.country_id': usr.country_id})
+    #app.logger.info('Indentity: %s', plans.count())
+    if plans:
+        return jsonify(plans)
     return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
 
 

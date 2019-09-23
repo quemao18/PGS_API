@@ -1,34 +1,36 @@
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: f0ff1fbd-818e-4bcd-9e63-febfd4f32ee5
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Updated plan_id: {'_id': {'$oid': '5d82773fc0886f554c63e5d9'}, 'company_id': '8af9ee1c-bf73-43e3-891b-31992749ee93', 'date_modified': {'$date': 1568816895843}, 'description': 'prueba', 'name': 'RH', 'plan_id': '49630c29-d42f-4bee-8d2c-efd5c9ced4f0', 'price': {'country_id': 'b9e349e2-4a94-43fe-988a-2db4c22405e0', 'table': [{'age_range': '18-24', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '25-29', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '30-34', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '35-39', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '40-44', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '45-49', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '50-54', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '55-59', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '60-64', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '65-69', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '70-74', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '75-79', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '80+', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '1 dependiente', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '2 dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '3+ dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': 'Deducible', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}]}, 'status': True}
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Updated plan_id: {'_id': {'$oid': '5d8247f8c0886f5c6cb70315'}, 'company_id': '8af9ee1c-bf73-43e3-891b-31992749ee93', 'date_modified': {'$date': 1568804808161}, 'description': 'Special', 'name': 'Special', 'plan_id': '2f89e553-e791-45a1-bd70-c9c3fbd50d5d', 'price': [{'age_range': '18-24', 'price1': '3144', 'price2': '0', 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '25-29', 'price1': '3590', 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '30-34', 'price1': '4061', 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '35-39', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '40-44', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '45-49', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '50-54', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '55-59', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '60-64', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '65-69', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '70-74', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '75-79', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '80+', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '1 dependiente', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '2 dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '3+ dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': 'Deducible', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}], 'status': True}
-Updated plan_id: 2f89e553-e791-45a1-bd70-c9c3fbd50d5d
-Updated plan_id: {'_id': {'$oid': '5d827609c0886f554c63e5d8'}, 'company_id': '8af9ee1c-bf73-43e3-891b-31992749ee93', 'date_modified': {'$date': 1568816585484}, 'description': 'prueba', 'name': 'Alejandro Toba', 'plan_id': 'f0ff1fbd-818e-4bcd-9e63-febfd4f32ee5', 'price': {'country_id': '41116976-5c9a-40cc-a93d-182b93482931', 'table': [{'age_range': '18-24', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '25-29', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '30-34', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '35-39', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '40-44', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '45-49', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '50-54', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '55-59', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '60-64', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '65-69', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '70-74', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '75-79', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '80+', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '1 dependiente', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '2 dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': '3+ dependientes', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}, {'age_range': 'Deducible', 'price1': 0, 'price2': 0, 'price3': 0, 'price4': 0, 'price5': 0, 'price6': 0, 'price7': 0, 'price8': 0}]}, 'status': True}
-Invalid json received for plan: f0ff1fbd-818e-4bcd-9e63-febfd4f32ee5
-Invalid json received for plan: f0ff1fbd-818e-4bcd-9e63-febfd4f32ee5
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Updated plan_id: {'_id': {'$oid': '5d82773fc0886f554c63e5d9'}, 'company_id': '8af9ee1c-bf73-43e3-891b-31992749ee93', 'date_modified': {'$date': 1568816895843}, 'description': 'prueba', 'name': 'RH', 'plan_id': '49630c29-d42f-4bee-8d2c-efd5c9ced4f0', 'status': True}
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Updated plan_id: {'_id': {'$oid': '5d82773fc0886f554c63e5d9'}, 'company_id': '8af9ee1c-bf73-43e3-891b-31992749ee93', 'date_modified': {'$date': 1568816895843}, 'description': 'prueba', 'name': 'RH', 'plan_id': '49630c29-d42f-4bee-8d2c-efd5c9ced4f0', 'price': [], 'status': True}
-Invalid json received for plan: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Updated plan_id: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Delete plan_id: 49630c29-d42f-4bee-8d2c-efd5c9ced4f0
-Plan 76133b67-e278-4a9c-91cc-f6cd22055d9e was created
-Delete plan_id: 76133b67-e278-4a9c-91cc-f6cd22055d9e
-Plan 9377b306-d577-44df-9597-eb32b76b071e was created
-Delete plan_id: f0ff1fbd-818e-4bcd-9e63-febfd4f32ee5
-Delete plan_id: 9377b306-d577-44df-9597-eb32b76b071e
-Plan a36b24f3-8a0c-4d69-a6c7-22be8ed5ce0d was created
-Delete plan_id: a36b24f3-8a0c-4d69-a6c7-22be8ed5ce0d
-Plan 51156b1b-f277-4fcc-95d2-815a31d6b93d was created
-Invalid json received for plan: 51156b1b-f277-4fcc-95d2-815a31d6b93d
-Invalid json received for country: undefined
+Indentity: <pgs_api.models.account.SessionIdentity object at 0x000002228BF42AC8>
+Indentity: User(username='alejandro.toba@gmail.com')
+Indentity: User(username='alejandro.toba@gmail.com')
+Indentity: User(username='alejandro.toba@gmail.com')
+Indentity: User(username='alejandro.toba@gmail.com')
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
+Indentity: 1
