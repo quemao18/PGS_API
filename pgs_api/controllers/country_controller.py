@@ -91,7 +91,7 @@ def update_country_status(country_id):
 # --------------------------------------------------------------------------
 @app.route('/api/v1/country/countries/', defaults={'term':''}, methods=['GET'])
 @app.route('/api/v1/country/countries/<term>', methods=['GET'])
-@jwt_required()
+#@jwt_required()
 @enable_jsonp
 def get_all_countries(term):
     service = CountryService

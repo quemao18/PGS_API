@@ -130,20 +130,20 @@ def update_account_plan(user_id):
 # --------------------------------------------------------------------------
 # PUT: /account/<uid>/fields
 # --------------------------------------------------------------------------
-@app.route('/api/v1/account/<user_id>/fields', methods=['PUT'])
-#@jwt_required()
-@enable_jsonp
-def update_account_fields(user_id):
-    try:
-        fields = request.get_json()
-        user_service = UserService(user_id)
-        user = user_service.get_user()
-        if user.update_surgical(fields['surgical']) and user.update_health(fields['health']):
-            app.logger.info('Updated fields for user_id: %s', user_id)
-            return SuccessResponse('Success', 'Question update success', 'FIELDS_OK').as_json()
-    except:
-        app.logger.error('Invalid json received for user: %s', user_id)
-        return ErrorResponse('Could not update fields', 'Invalid data provided').as_json()
+# @app.route('/api/v1/account/<user_id>/fields', methods=['PUT'])
+# #@jwt_required()
+# @enable_jsonp
+# def update_account_fields(user_id):
+#     try:
+#         fields = request.get_json()
+#         user_service = UserService(user_id)
+#         user = user_service.get_user()
+#         if user.update_surgical(fields['surgical']) and user.update_health(fields['health']):
+#             app.logger.info('Updated fields for user_id: %s', user_id)
+#             return SuccessResponse('Success', 'Question update success', 'FIELDS_OK').as_json()
+#     except:
+#         app.logger.error('Invalid json received for user: %s', user_id)
+#         return ErrorResponse('Could not update fields', 'Invalid data provided').as_json()
 
 
 # --------------------------------------------------------------------------
@@ -154,6 +154,7 @@ def update_account_fields(user_id):
 @enable_jsonp
 def post_account():
     user_data = request.get_json()
+    # app.logger.info('User data %s ', user_data)
     if user_data:
         try:
             user = User(
@@ -170,18 +171,24 @@ def post_account():
             user_type=user_data['user_type'],
             spouse_age=user_data['spouse_age'],
             spouse_gender = user_data['spouse_gender'],
-            dependent = user_data['dependent']
+            dependents = user_data['dependents']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)
             app.logger.info('User %s was created', user.user_id)
             return SuccessResponse(user.user_id, 'User created successfully', 'n/a').as_json()
         except mongoengine.errors.NotUniqueError as e:
-            found = re.search('"(.+?)"', str(e)).group(1)
-            if found == user.username:
-                return ErrorResponse('Username is registred ', str(e)).as_json()
-            if found == user.email:
-                return ErrorResponse('Email is registred ', str(e)).as_json()
+            user = User.objects.get(email=user_data['email'])
+            app.logger.info('User %s was updated', user)
+            user_service = UserService(user.user_id)
+            user = user_service.get_user()
+            user.update_user(user_data)
+            return SuccessResponse(user.user_id, 'User updated successfully', 'n/a').as_json()
+            # found = re.search('"(.+?)"', str(e)).group(1)
+            # if found == user.username:
+            #     return ErrorResponse('Username is registred ', str(e)).as_json()
+            # if found == user.email:
+            #     return ErrorResponse('Email is registred ', str(e)).as_json()
     return ErrorResponse('Error processing request', 'The provided data is not valid').as_json()
 
 # --------------------------------------------------------------------------

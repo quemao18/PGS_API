@@ -208,6 +208,14 @@ class CompanyService:
         else:
             data = Company.objects.search_text(term).order_by('-date_modified').limit(100)
         return data
+    
+    def get_companies_app(term):
+        """The method for get companies"""
+        if term=='':
+            data = Company.objects(status=True).order_by('-name')
+        else:
+            data = Company.objects.search_text(term, status=True).order_by('-name').limit(100)
+        return data
 
 
     def delete(self):

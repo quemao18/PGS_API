@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField, IntField, FloatField, EmbeddedDocumentListField, ListField, EmbeddedDocumentField
+from mongoengine import Document, StringField, DateTimeField, IntField, FloatField, EmbeddedDocumentListField, BooleanField, ListField, EmbeddedDocumentField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -18,8 +18,8 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, user_id, username, name, last_name, email, gender, age, country_id, smoker, surgical, 
-    health, user_type, spouse_age, spouse_gender, dependent): 
+    def __init__(self, user_id, username, name, last_name, email, gender, age, country_id, smoker, 
+    user_type, spouse_age, spouse_gender, dependents, maternity, transplant): 
         self.id = user_id
         self.user_id = user_id
         self.username = username
@@ -30,12 +30,12 @@ class SessionIdentity:
         self.age = age
         self.country_id = country_id
         self.smoker = smoker
-        self.surgical = surgical
-        self.health = health
         self.user_type = user_type
         self.spouse_age = spouse_age
         self.spouse_gender = spouse_gender
-        self.dependent = dependent
+        self.dependents = dependents
+        self.maternity = maternity
+        self.transplant = transplant
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -52,12 +52,13 @@ class SessionIdentity:
             "age": self.age,
             "country_id": self.country_id,
             "smoker": self.smoker,
-            "surgical": self.surgical,
-            "health": self.health, 
             "user_type": self.user_type,
             "spouse_age": self.spouse_age,
             "spouse_gender": self.spouse_gender,
-            "dependent": self.dependent
+            "dependents": self.dependents,
+            "maternity": self.maternity,
+            "transplant": self.transplant
+            
         })
 
 
@@ -89,13 +90,17 @@ class User(Document):
 
     country_id = StringField(max_length=40, required=True)
 
-    smoker = StringField(max_length=10, required=False)
+    smoker = BooleanField(max_length=10, required=False)
 
-    surgical = StringField(max_length=40, required=False)
+    maternity = BooleanField(max_length=10, required=False)
 
-    health = StringField(max_length=120, required=False)
+    transplant = BooleanField(max_length=10, required=False)
 
-    dependent = IntField(max_length=2, required=False, default = 0)
+    #surgical = StringField(max_length=40, required=False)
+
+    #health = StringField(max_length=120, required=False)
+
+    dependents = IntField(max_length=2, required=False, default = 0)
 
     spouse_age = IntField(max_length=2, required=False, default = 0)
 
@@ -120,7 +125,7 @@ class User(Document):
             'user_id',
             'username',
             'email',
-             {'fields': ['$email', "$name"],}
+             {'fields': ['$email', "$name", "$last_name"],}
         ]
     }
 
@@ -148,6 +153,33 @@ class User(Document):
             self.save()
 
     # --------------------------------------------------------------------------
+    # METHOD UPDATE USER
+    # --------------------------------------------------------------------------
+    def update_user(self, data):
+        """The method for update user"""
+        #self.id = user_id
+        #self.user_id = user_id
+        self.username = data['email']
+        self.name = data['name']
+        self.last_name = data['last_name']
+        self.email = data['email']
+        self.gender = data['gender']
+        self.age = data['age']
+        self.country_id = data['country_id']
+        self.smoker = data['smoker']
+        #self.surgical = data['surgical']
+        #self.health = health
+        #self.user_type = user_type
+        self.spouse_age = data['spouse_age']
+        self.spouse_gender = data['spouse_gender']
+        self.dependents = data['dependents']
+        self.maternity = data['maternity']
+        self.transplant = data['transplant']
+        self.save()
+        return True
+
+
+    # --------------------------------------------------------------------------
     # METHOD UPDATE PASSWORD
     # --------------------------------------------------------------------------
     def update_password(self, password):
@@ -168,20 +200,20 @@ class User(Document):
     # --------------------------------------------------------------------------
     # METHOD UPDATE QUESTION SURGICAL
     # --------------------------------------------------------------------------
-    def update_surgical(self, data):
-        """The method for update surgical"""
-        self.surgical = data
-        self.save()
-        return True
+    # def update_surgical(self, data):
+    #     """The method for update surgical"""
+    #     self.surgical = data
+    #     self.save()
+    #     return True
 
     # --------------------------------------------------------------------------
     # METHOD UPDATE QUESTION HEALTH
     # --------------------------------------------------------------------------
-    def update_health(self, data):
-        """The method for update health"""
-        self.health = data
-        self.save()
-        return True
+    # def update_health(self, data):
+    #     """The method for update health"""
+    #     self.health = data
+    #     self.save()
+    #     return True
 
     # --------------------------------------------------------------------------
     # METHOD AUTHENTICATE
@@ -205,12 +237,12 @@ class User(Document):
                                self.age,
                                self.country_id,
                                self.smoker, 
-                               self.surgical, 
-                               self.health, 
                                self.user_type, 
                                self.spouse_age,
                                self.spouse_gender, 
-                               self.dependent)
+                               self.dependents, 
+                               self.maternity, 
+                               self.transplant)
    
     # --------------------------------------------------------------------------
     # METHOD update plan user

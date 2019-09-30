@@ -1,36 +1,9 @@
-Indentity: <pgs_api.models.account.SessionIdentity object at 0x000002228BF42AC8>
-Indentity: User(username='alejandro.toba@gmail.com')
-Indentity: User(username='alejandro.toba@gmail.com')
-Indentity: User(username='alejandro.toba@gmail.com')
-Indentity: User(username='alejandro.toba@gmail.com')
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8
-Indentity: 1
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='sfcd@sdfd.cob') was updated
+User User(username='sfcd@sdfd.cob') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com

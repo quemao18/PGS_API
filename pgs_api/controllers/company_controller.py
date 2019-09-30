@@ -1,6 +1,8 @@
 from pgs_api import app
 from flask import request, jsonify, redirect, url_for
 from pgs_api.models.company import Company
+from pgs_api.models.plan import Plan
+from pgs_api.models.account import UserService
 from pgs_api.models.company import CompanyService
 from pgs_api.extensions.jsonp import enable_jsonp
 from pgs_api.extensions.error_handling import ErrorResponse
@@ -64,6 +66,67 @@ def get_all_companies(term):
     users = service.get_companies(term)
     if users: 
         return jsonify(users) 
+    return ErrorResponse('Companies not found', 'Companies collections is empty').as_json()
+
+# --------------------------------------------------------------------------
+# GET: /company/companies/<user_id>/options
+# Devuelve todas las opciones filtrando por país y edad del usuario
+# Tambien si tiene dependientes
+# --------------------------------------------------------------------------
+@app.route('/api/v1/company/companies/<user_id>/options', methods=['GET'])
+#@jwt_required()
+@enable_jsonp
+def get_all_companies_id_user(user_id):
+    service = CompanyService
+    user_service = UserService(user_id)
+    user = user_service.get_user()
+    #print(user.country_id)
+    companies = service.get_companies_app('')
+    comps =[]
+    for company in companies:
+        plans =  Plan.objects(company_id=company.company_id, status = True)
+        plns = []
+        for plan in plans:
+            
+            for price in plan.price:
+                 new_price = []
+                 if price['country_id'] == user.country_id:
+                    # new_price.append(price)
+                    for age_filter in price['table']:
+                        if(age_filter['age_range'] == 'Deducible'):
+                            new_price.append(age_filter)
+                        if(age_filter['age_range'] != '80+' and 
+                            age_filter['age_range'] != 'Deducible' and 
+                            age_filter['age_range'] != '1 dependiente' and 
+                            age_filter['age_range'] != '2 dependientes' and 
+                            age_filter['age_range'] != '3+ dependientes' and 
+                            age_filter['age_range'] != 'Deducible' ):
+                            age = age_filter['age_range'].split('-')
+                            if(int(age[0]) <= user.age <=int(age[1])):
+                                new_price.append(age_filter)
+                        if(age_filter['age_range'] == '80+' and user.age > 79):
+                            new_price.append(age_filter)
+                        if(age_filter['age_range'] == '1 dependiente'  and user.dependents == 1):
+                            new_price.append(age_filter)
+                        if(age_filter['age_range'] == '2 dependientes' and user.dependents == 2):
+                            new_price.append(age_filter)
+                        if(age_filter['age_range'] == '3+ dependientes' and user.dependents > 2):
+                            new_price.append(age_filter)
+        
+            if(new_price):
+                plan.price = new_price
+                plns.append(plan)
+        comps.append(
+            {
+                'company_id': company.company_id, 
+                'name': company.name,
+                'email': company.email,
+                'description': company.description,
+                'plans': plns
+            })
+
+    if comps: 
+        return jsonify(comps) 
     return ErrorResponse('Companies not found', 'Companies collections is empty').as_json()
 
 # --------------------------------------------------------------------------
