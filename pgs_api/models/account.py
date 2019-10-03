@@ -19,7 +19,7 @@ class SessionIdentity:
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
     def __init__(self, user_id, username, name, last_name, email, gender, age, country_id, smoker, 
-    user_type, spouse_age, spouse_gender, dependents, maternity, transplant): 
+    user_type, spouse_age, spouse_gender, dependents, dependentsAges, maternity, transplant): 
         self.id = user_id
         self.user_id = user_id
         self.username = username
@@ -34,6 +34,7 @@ class SessionIdentity:
         self.spouse_age = spouse_age
         self.spouse_gender = spouse_gender
         self.dependents = dependents
+        self.dependentsAges = dependentsAges
         self.maternity = maternity
         self.transplant = transplant
 
@@ -56,6 +57,7 @@ class SessionIdentity:
             "spouse_age": self.spouse_age,
             "spouse_gender": self.spouse_gender,
             "dependents": self.dependents,
+            "dependentsAges": self.dependentsAges,
             "maternity": self.maternity,
             "transplant": self.transplant
             
@@ -101,6 +103,8 @@ class User(Document):
     #health = StringField(max_length=120, required=False)
 
     dependents = IntField(max_length=2, required=False, default = 0)
+
+    dependentsAges = ListField(required=False, default = 0)
 
     spouse_age = IntField(max_length=2, required=False, default = 0)
 
@@ -173,6 +177,7 @@ class User(Document):
         self.spouse_age = data['spouse_age']
         self.spouse_gender = data['spouse_gender']
         self.dependents = data['dependents']
+        self.dependentsAges = data['dependentsAges']
         self.maternity = data['maternity']
         self.transplant = data['transplant']
         self.save()
@@ -241,6 +246,7 @@ class User(Document):
                                self.spouse_age,
                                self.spouse_gender, 
                                self.dependents, 
+                               self.dependentsAges,
                                self.maternity, 
                                self.transplant)
    

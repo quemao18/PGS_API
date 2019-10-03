@@ -171,7 +171,8 @@ def post_account():
             user_type=user_data['user_type'],
             spouse_age=user_data['spouse_age'],
             spouse_gender = user_data['spouse_gender'],
-            dependents = user_data['dependents']
+            dependents = user_data['dependents'],
+            dependentsAges = user_data['dependentsAges']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)
