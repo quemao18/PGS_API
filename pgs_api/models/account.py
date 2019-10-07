@@ -18,8 +18,8 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, user_id, username, name, last_name, email, gender, age, country_id, smoker, 
-    user_type, spouse_age, spouse_gender, dependents, dependentsAges, maternity, transplant): 
+    def __init__(self, user_id, username, name, last_name, email, gender, age, photo, country_id, smoker, 
+    user_type, spouse_age, spouse_gender, dependents, dependents_ages, maternity, transplant): 
         self.id = user_id
         self.user_id = user_id
         self.username = username
@@ -28,13 +28,14 @@ class SessionIdentity:
         self.email = email
         self.gender = gender
         self.age = age
+        self.photo = photo
         self.country_id = country_id
         self.smoker = smoker
         self.user_type = user_type
         self.spouse_age = spouse_age
         self.spouse_gender = spouse_gender
         self.dependents = dependents
-        self.dependentsAges = dependentsAges
+        self.dependents_ages = dependents_ages
         self.maternity = maternity
         self.transplant = transplant
 
@@ -50,6 +51,7 @@ class SessionIdentity:
             "last_name": self.last_name,
             "email": self.email,
             "gender": self.gender,
+            "photo": self.photo,
             "age": self.age,
             "country_id": self.country_id,
             "smoker": self.smoker,
@@ -57,7 +59,7 @@ class SessionIdentity:
             "spouse_age": self.spouse_age,
             "spouse_gender": self.spouse_gender,
             "dependents": self.dependents,
-            "dependentsAges": self.dependentsAges,
+            "dependents_ages": self.dependents_ages,
             "maternity": self.maternity,
             "transplant": self.transplant
             
@@ -84,6 +86,10 @@ class User(Document):
 
     username = StringField(max_length=120, required=False, unique=True)
 
+    photo = StringField(max_length=120, required=False, default='')
+
+    # phone = StringField(max_length=120, required=False, default='')
+
     gender = StringField(max_length=40, required=True)
 
     #dob = DateTimeField(max_length=120, required=False)
@@ -104,7 +110,7 @@ class User(Document):
 
     dependents = IntField(max_length=2, required=False, default = 0)
 
-    dependentsAges = ListField(required=False, default = 0)
+    dependents_ages = ListField(required=False)
 
     spouse_age = IntField(max_length=2, required=False, default = 0)
 
@@ -171,13 +177,15 @@ class User(Document):
         self.age = data['age']
         self.country_id = data['country_id']
         self.smoker = data['smoker']
+        self.photo = data['photo']
+        # self.phone = data['phone']
         #self.surgical = data['surgical']
         #self.health = health
         #self.user_type = user_type
         self.spouse_age = data['spouse_age']
         self.spouse_gender = data['spouse_gender']
         self.dependents = data['dependents']
-        self.dependentsAges = data['dependentsAges']
+        self.dependents_ages = data['dependents_ages']
         self.maternity = data['maternity']
         self.transplant = data['transplant']
         self.save()
@@ -240,13 +248,14 @@ class User(Document):
                                self.email, 
                                self.gender,
                                self.age,
+                               self.photo,
                                self.country_id,
                                self.smoker, 
                                self.user_type, 
                                self.spouse_age,
                                self.spouse_gender, 
                                self.dependents, 
-                               self.dependentsAges,
+                               self.dependents_ages,
                                self.maternity, 
                                self.transplant)
    

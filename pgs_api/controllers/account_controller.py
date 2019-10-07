@@ -167,12 +167,15 @@ def post_account():
             age=user_data['age'],
             country_id=user_data['country_id'],
             smoker=user_data['smoker'],
+            maternity=user_data['maternity'],
+            transplant=user_data['transplant'],
+            photo=user_data['photo'],
             password=None, 
             user_type=user_data['user_type'],
             spouse_age=user_data['spouse_age'],
             spouse_gender = user_data['spouse_gender'],
             dependents = user_data['dependents'],
-            dependentsAges = user_data['dependentsAges']
+            dependents_ages = user_data['dependents_ages']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)

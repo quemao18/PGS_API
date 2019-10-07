@@ -7,3 +7,70 @@ Authenticated user with correct credentials user: admin3@pgs.com
 Authenticated user with correct credentials user: admin3@pgs.com
 Authenticated user with correct credentials user: admin3@pgs.com
 Authenticated user with correct credentials user: admin3@pgs.com
+A retrieval attempt of non-existing user occurred: c8762d8e-9112-402d-b366-fb13d719360a
+User 4d132d83-f966-4219-89b5-a99d8acd10bd was created
+User User(username='ale@cc.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='ale@cc.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='ale@cc.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+User: attempted to login using invalid credentials. admin@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User User(username='admin2@pgs.com') was updated
+User: attempted to login using invalid credentials. admin2@pgs.com
+Authenticated user with correct credentials user: admin2@pgs.com
+User User(username='admin2@pgs.com') was updated
+Authenticated user with correct credentials user: admin2@pgs.com
+Authenticated user with correct credentials user: admin2@pgs.com
+User: attempted to login using invalid credentials. admin@pgs.com
+User: attempted to login using invalid credentials. admin@pgs.com
+A logging attempt of non-existing user: occurred. admin@pgs.com
+Authenticated user with correct credentials user: admin3@pgs.com
+User c8cd82ca-f465-4538-9b27-f89cbb3062a8 was created
+Authenticated user with correct credentials user: admin@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+User 781e36e9-73d2-4979-bd44-1781e9970291 was created
+Authenticated user with correct credentials user: admin@pgs.com
+User 52c41266-5842-4aa5-a75f-5d9adfc47d89 was created
+User ba6772fa-f883-4c15-8a44-ebb594d2d818 was created
+Authenticated user with correct credentials user: admin@pgs.com
+User User(username='admin@pgs.com') was updated
+Authenticated user with correct credentials user: admin@pgs.com
+Authenticated user with correct credentials user: admin@pgs.com
