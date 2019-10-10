@@ -86,7 +86,7 @@ class User(Document):
 
     username = StringField(max_length=120, required=False, unique=True)
 
-    photo = StringField(max_length=120, required=False, default='')
+    photo = StringField(max_length=255, required=False, default='')
 
     # phone = StringField(max_length=120, required=False, default='')
 

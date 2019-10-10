@@ -74,3 +74,73 @@ Authenticated user with correct credentials user: admin@pgs.com
 User User(username='admin@pgs.com') was updated
 Authenticated user with correct credentials user: admin@pgs.com
 Authenticated user with correct credentials user: admin@pgs.com
+User User(username='admin@pgs.com') was updated
+Authenticated user with correct credentials user: admin@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+Invalid json received for plan: d079abb6-e70f-4b2f-aa7d-69046f8a89e6
+Invalid json received for plan: b5b58e30-c5d0-42fc-aadf-be3f323b5e8b
+User 1670352a-8ba3-44c7-ba9b-60403808c318 was created
+A logging attempt of non-existing user: occurred. admin3@pgs.com
+A logging attempt of non-existing user: occurred. admin3@pgs.com
+Authenticated user with correct credentials user: admin@pgs.com
+Authenticated user with correct credentials user: admin@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User 7b01fd32-526c-4bdd-b4c4-17ff68d0b482 was created
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin@pgs.com
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+A retrieval attempt of non-existing user occurred: c8762d8e-9112-402d-b366-fb13d719360a
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+User User(username='alejandro.toba@gmail.com') was updated
+Authenticated user with correct credentials user: admin@pgs.com
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=e66c72a2-c5ae-4ccc-b52e-843adca4dc14
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=805dfcf1-7286-4c8d-918d-417f38c7d353
+Logo update for company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Updated company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Updated plan_id: b472eff3-b0e3-4000-8acc-abfcd5cc7328
+Updated status for plan_id: b472eff3-b0e3-4000-8acc-abfcd5cc7328
+Updated status for company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Plan 5db020a0-dc96-449a-9f8e-43fd8f151890 was created
+Authenticated user with correct credentials user: admin@pgs.com
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=31fc1208-c5eb-4795-9ef6-978289ebae3e
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=f96305cb-5087-4914-9785-eb0fe31f9b24
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=c7f29dab-14bd-44f9-bd59-e398ddb92af3
+Logo update for company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Updated company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Authenticated user with correct credentials user: admin@pgs.com
+Updated company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos%2Fundefined?alt=media&token=6cfa0304-dcc2-406c-bf5d-addaaf3ebfe1
+Logo update for company_id: 2b64a89b-1400-4e52-abfa-30653bb8f427
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos%2Fundefined?alt=media&token=6d220e13-a743-4b1f-833a-9d786e876463
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Authenticated user with correct credentials user: admin@pgs.com
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos%2Fundefined?alt=media&token=bfdef657-7ab1-4b24-910e-5a1f692c3e0e
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Authenticated user with correct credentials user: admin@pgs.com
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Logo URL: https://firebasestorage.googleapis.com/v0/b/pgs-consulting.appspot.com/o/companies%2Flogos?alt=media&token=94207038-bde4-40d1-aa0d-8b34de2964a0
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Authenticated user with correct credentials user: admin@pgs.com
+Logo update for company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93
+Updated company_id: 8af9ee1c-bf73-43e3-891b-31992749ee93

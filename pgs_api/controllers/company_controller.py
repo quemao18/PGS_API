@@ -87,41 +87,52 @@ def get_all_companies_id_user(user_id):
         plans =  Plan.objects(company_id=company.company_id, status = True)
         plns = []
         for plan in plans:
-            
+           
+            new_price = []
+
             for price in plan.price:
-                 new_price = []
-                 if price['country_id'] == user.country_id:
+                if price['country_id'] == user.country_id:
                     # new_price.append(price)
                     for age_filter in price['table']:
-                        if(age_filter['age_range'] == 'Deducible'):
-                            new_price.append(age_filter)
-                        if(age_filter['age_range'] != '80+' and 
-                            age_filter['age_range'] != 'Deducible' and 
-                            age_filter['age_range'] != '1 dependiente' and 
-                            age_filter['age_range'] != '2 dependientes' and 
-                            age_filter['age_range'] != '3+ dependientes' and 
-                            age_filter['age_range'] != 'Deducible' ):
-                            age = age_filter['age_range'].split('-')
-                            if(int(age[0]) <= user.age <=int(age[1])):
+                        age = age_filter['age_range'].split('-') 
+                        if( 
+                        age_filter['price1'] > 0 or
+                        age_filter['price2'] > 0 or
+                        age_filter['price3'] > 0 or
+                        age_filter['price4'] > 0 or
+                        age_filter['price5'] > 0 or
+                        age_filter['price6'] > 0 or
+                        age_filter['price7'] > 0 or
+                        age_filter['price8'] > 0
+                        ):
+                            if(age_filter['age_range'] != '80+' and 
+                                age_filter['age_range'] != 'Deducible' and 
+                                age_filter['age_range'] != '1 dependiente' and 
+                                age_filter['age_range'] != '2 dependientes' and 
+                                age_filter['age_range'] != '3+ dependientes' and 
+                                age_filter['age_range'] != 'Deducible' ):
+                                if(int(age[0]) <= user.age <=int(age[1])):
+                                    new_price.append(age_filter)
+                            if(age_filter['age_range'] == '80+' and user.age > 79):
                                 new_price.append(age_filter)
-                        if(age_filter['age_range'] == '80+' and user.age > 79):
-                            new_price.append(age_filter)
-                        if(age_filter['age_range'] == '1 dependiente'  and user.dependents == 1):
-                            new_price.append(age_filter)
-                        if(age_filter['age_range'] == '2 dependientes' and user.dependents == 2):
-                            new_price.append(age_filter)
-                        if(age_filter['age_range'] == '3+ dependientes' and user.dependents > 2):
-                            new_price.append(age_filter)
-        
-            if(new_price):
+                            if(age_filter['age_range'] == '1 dependiente'   and user.dependents == 1):
+                                new_price.append(age_filter)
+                            if(age_filter['age_range'] == '2 dependientes'  and user.dependents == 2):
+                                new_price.append(age_filter)
+                            if(age_filter['age_range'] == '3+ dependientes' and user.dependents >  2):
+                                new_price.append(age_filter)
+                            if(age_filter['age_range'] == 'Deducible'):
+                                new_price.append(age_filter)   
                 plan.price = new_price
-                plns.append(plan)
+            plns.append(plan)
         comps.append(
             {
                 'company_id': company.company_id, 
-                'name': company.name,
-                'email': company.email,
-                'description': company.description,
+                'company_name': company.name,
+                'company_email': company.email,
+                'company_description': company.description,
+                'company_logo': company.logo, 
+                'company_status': company.status, 
                 'plans': plns
             })
 
