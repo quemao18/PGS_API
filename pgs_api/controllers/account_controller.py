@@ -154,7 +154,6 @@ def update_account_plan(user_id):
 @enable_jsonp
 def post_account():
     user_data = request.get_json()
-    print('post register')
     # app.logger.info('User data %s ', user_data)
     if user_data:
         try:
