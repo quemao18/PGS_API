@@ -4,3 +4,4 @@ pgs_api.log
 !**/extensions/**/__pycache__/
 !**/models/**/__pycache__/
 !**/security/**/__pycache__/
+pgs_api/controllers/__pycache__/
