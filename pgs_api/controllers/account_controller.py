@@ -154,7 +154,7 @@ def update_account_plan(user_id):
 @enable_jsonp
 def post_account():
     user_data = request.get_json()
-    app.logger.info('User data %s ', user_data)
+    # app.logger.info('User data %s ', user_data)
     if user_data:
         try:
             user = User(
