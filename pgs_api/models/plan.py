@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from mongoengine import Document, StringField, DateTimeField, FloatField, ListField, BooleanField, EmbeddedDocument
+from mongoengine import Document, StringField, DateTimeField, FloatField, ListField, BooleanField, EmbeddedDocument, DecimalField
 from werkzeug.security import safe_str_cmp
 from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
@@ -16,16 +16,18 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, plan_id, description, price): 
+    def __init__(self, id, company_id, name, plan_id, description, price, transplant, maternity, cost_admin): 
         self.id = id
         self.plan_id
         self.company_id = company_id
         self.price = price
         self.name = name
         self.description = description
+        self.transplant
+        self.maternity
+        self.cost_admin
 
         
-
     # --------------------------------------------------------------------------
     # METHOD STR
     # --------------------------------------------------------------------------
@@ -36,7 +38,11 @@ class SessionIdentity:
             "plan_id": self.plan_id,
             "company_id": self.company_id,
             "name": self.name,
-            "description": self.description
+            "description": self.description,
+            "maternity": self.maternity,
+            "transplant": self.transplant,
+            "cost_admin": self.cost_admin,
+            "price": self.price
         })
 
 
@@ -55,6 +61,12 @@ class Plan(Document):
     company_id = StringField(max_length=40, required=True)
 
     name = StringField(max_length=120, required=True)
+
+    transplant = DecimalField(required=False, default=0)
+
+    maternity = DecimalField(required=False, default=0)
+
+    cost_admin = DecimalField(required=False, default=0)
 
     price = ListField(required=True)
 
@@ -115,6 +127,9 @@ class Plan(Document):
         """The method for update plan"""
         self.name = data['name']
         self.description = data['description']
+        self.maternity = data['maternity']
+        self.transplant = data['transplant']
+        self.cost_admin = data['cost_admin']
         self.price = data['price']
         self.date_modified = datetime.datetime.now
         self.save()
@@ -130,7 +145,10 @@ class Plan(Document):
                                self.plan_id,
                                self.name,
                                self.description,
-                               self.price
+                               self.price,
+                               self.transplant,
+                               self.maternity,
+                               self.cost_admin
                               )
 
 # ------------------------------------------------------------------------------

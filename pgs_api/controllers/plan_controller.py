@@ -79,6 +79,7 @@ def update_plan_status(plan_id):
 @jwt_required()
 @enable_jsonp
 def put_plan(plan_id):
+    print(request.get_json())
     try:
         data = request.get_json()
         app.logger.info('Updated plan_id: %s', data)
@@ -115,6 +116,9 @@ def post_plan():
             plan_id=str(uuid.uuid4()),
             company_id = data['company_id'],
             name=data['name'],
+            maternity=data['maternity'],
+            transplant=data['transplant'],
+            cost_admin=data['cost_admin'],
             price=data['price'],
             description=data['description']
             )

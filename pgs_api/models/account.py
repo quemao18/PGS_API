@@ -19,7 +19,7 @@ class SessionIdentity:
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
     def __init__(self, user_id, username, name, last_name, email, gender, age, photo, country_id, smoker, 
-    user_type, spouse_age, spouse_gender, dependents, dependents_ages, maternity, transplant): 
+    user_type, spouse_age, spouse_gender, dependents, dependents_ages, maternity, transplant, plans): 
         self.id = user_id
         self.user_id = user_id
         self.username = username
@@ -38,6 +38,7 @@ class SessionIdentity:
         self.dependents_ages = dependents_ages
         self.maternity = maternity
         self.transplant = transplant
+        self.plans = plans
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -61,7 +62,8 @@ class SessionIdentity:
             "dependents": self.dependents,
             "dependents_ages": self.dependents_ages,
             "maternity": self.maternity,
-            "transplant": self.transplant
+            "transplant": self.transplant,
+            "plans": self.plans
             
         })
 
@@ -124,7 +126,7 @@ class User(Document):
 
     plan_id = StringField(max_length=40, required=False)
 
-    #plans = ListField(EmbeddedDocumentField('Plan'))
+    plans = ListField()
 
     price = FloatField(max_length=120, required=False)
 
@@ -188,6 +190,7 @@ class User(Document):
         self.dependents_ages = data['dependents_ages']
         self.maternity = data['maternity']
         self.transplant = data['transplant']
+        self.date_modified = datetime.datetime.now
         self.save()
         return True
 
@@ -257,7 +260,8 @@ class User(Document):
                                self.dependents, 
                                self.dependents_ages,
                                self.maternity, 
-                               self.transplant)
+                               self.transplant, 
+                               self.plans)
    
     # --------------------------------------------------------------------------
     # METHOD update plan user
@@ -265,6 +269,15 @@ class User(Document):
     def update_plan(self, plan_id):
         """The method for update health"""
         self.plan_id = plan_id
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
+    # METHOD update plans user
+    # --------------------------------------------------------------------------
+    def update_plans(self, plans):
+        """The method for update health"""
+        self.plans.append(plans)
         self.save()
         return True
 

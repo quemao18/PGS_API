@@ -145,6 +145,23 @@ def update_account_plan(user_id):
 #         app.logger.error('Invalid json received for user: %s', user_id)
 #         return ErrorResponse('Could not update fields', 'Invalid data provided').as_json()
 
+# --------------------------------------------------------------------------
+# PUT: /account/<uid>/plans
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<user_id>/plans', methods=['POST'])
+#@jwt_required()
+@enable_jsonp
+def update_account_plans(user_id):
+    try:
+        plans = request.get_json()
+        user_service = UserService(user_id)
+        user = user_service.get_user()
+        if user.update_plans(plans):
+            app.logger.info('Updated plans for user_id: %s', user_id)
+            return SuccessResponse('Success', 'Plans update success', 'FIELDS_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for user: %s', user_id)
+        return ErrorResponse('Could not update plans', 'Invalid data provided').as_json()
 
 # --------------------------------------------------------------------------
 # POST: /account
