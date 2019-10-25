@@ -33,3 +33,13 @@ MONGODB_PORT = 27017 #port here
 MONGODB_USERNAME = ''
 MONGODB_PASSWORD = ''
 
+# ------------------------
+# SMTP SETTINGS AWS SES
+#------------------------
+
+HOST_SMTP = 'email-smtp.us-east-1.amazonaws.com'
+FROM_EMAIL = 'info@rodasalias.com'
+USER_SMTP = 'AKIA4NXPK3KZCM7RYQHR'
+PASS_SMTP = 'BG/ibH6Hb39NVDG9iVja6mR2KWXGFYC0jyziqNXAnKii'
+PORT_SMTP = 587
+

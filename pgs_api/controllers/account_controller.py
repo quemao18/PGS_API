@@ -1,5 +1,5 @@
 from pgs_api import app
-from flask import request, jsonify
+from flask import request, jsonify, render_template
 from pgs_api.models.account import User
 from pgs_api.models.account import UserService
 from pgs_api.security.idam import find_user, all_users
@@ -12,6 +12,14 @@ import mongoengine
 import re
 import pymongo
 from pgs_api.models.plan import Plan
+
+import smtplib
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+from config import FROM_EMAIL, HOST_SMTP, USER_SMTP, PASS_SMTP, PORT_SMTP
+import codecs
 
 # --------------------------------------------------------------------------
 # GET ACCOUNT
@@ -157,8 +165,9 @@ def update_account_plans(user_id):
         user_service = UserService(user_id)
         user = user_service.get_user()
         if user.update_plans(plans):
+            send_email_user(user.user_id)
             app.logger.info('Updated plans for user_id: %s', user_id)
-            return SuccessResponse('Success', 'Plans update success', 'FIELDS_OK').as_json()
+            return SuccessResponse('Success', 'Plans update success', 'PLANS_OK').as_json()
     except:
         app.logger.error('Invalid json received for user: %s', user_id)
         return ErrorResponse('Could not update plans', 'Invalid data provided').as_json()
@@ -228,3 +237,48 @@ def delete_account(user_id):
     except:
         app.logger.error('Invalid json received for user: %s', user_id)
         return ErrorResponse('Could not delete user_id', 'Invalid user_id provided').as_json()
+
+
+# --------------------------------------------------------------------------
+# SEND MAIL: 
+# --------------------------------------------------------------------------
+def send_email_user(user_id):
+    try:
+        service = UserService(user_id)
+        user = service.get_user()
+        app.logger.info('Send email to: %s', user.email)
+        # app.logger.info('Send to: %s', FROM_EMAIL)
+        me = FROM_EMAIL
+        you = user.email
+
+        # Create message container - the correct MIME type is multipart/alternative.
+        msg = MIMEMultipart('alternative')
+        msg['Subject'] = "Solicitud recibida."
+        msg['From'] = me
+        msg['To'] = you
+
+        # Create the body of the message (a plain-text and an HTML version).
+        text = "Hola! " + user.name +", \nHemos recibido tu solicitud, pronto te contactaremos.\nGracias por preferirnos."
+        html = render_template('email_success.html', name=user.name)
+        # Record the MIME types of both parts - text/plain and text/html.
+        part1 = MIMEText(text, 'plain')
+        part2 = MIMEText(html, 'html')
+        # Attach parts into message container.
+        # According to RFC 2046, the last part of a multipart message, in this case
+        # the HTML message, is best and preferred.
+        msg.attach(part1)
+        msg.attach(part2)
+
+        # Send the message via local SMTP server.
+        # s = smtplib.SMTP('localhost')
+        s = smtplib.SMTP(host=HOST_SMTP, port=PORT_SMTP)
+        # sendmail function takes 3 arguments: sender's address, recipient's address
+        # and message to send - here it is sent as one string.
+        s.starttls()
+        s.login(USER_SMTP, PASS_SMTP)
+        s.sendmail(me, you, msg.as_string())
+        s.quit
+    except Exception as e: 
+        app.logger.info('%s', e)
+        # print(e)
+        return ErrorResponse('Could not send mail user_id', 'Invalid user_id provided').as_json()

@@ -6,6 +6,7 @@ from flask import jsonify
 from pgs_api.security.entropy import gen_salt, compute_hash
 import datetime
 from pgs_api.models.plan import Plan, PlanService
+from pgs_api import app
 
 
 # ------------------------------------------------------------------------------

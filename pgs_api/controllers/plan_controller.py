@@ -79,7 +79,7 @@ def update_plan_status(plan_id):
 @jwt_required()
 @enable_jsonp
 def put_plan(plan_id):
-    print(request.get_json())
+    # print(request.get_json())
     try:
         data = request.get_json()
         app.logger.info('Updated plan_id: %s', data)
