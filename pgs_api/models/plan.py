@@ -16,7 +16,7 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, plan_id, description, price, transplant, maternity, cost_admin): 
+    def __init__(self, id, company_id, name, plan_id, description, price, transplant, maternity, cost_admin, url_pdf): 
         self.id = id
         self.plan_id
         self.company_id = company_id
@@ -26,6 +26,7 @@ class SessionIdentity:
         self.transplant
         self.maternity
         self.cost_admin
+        self.url_pdf
 
         
     # --------------------------------------------------------------------------
@@ -42,7 +43,8 @@ class SessionIdentity:
             "maternity": self.maternity,
             "transplant": self.transplant,
             "cost_admin": self.cost_admin,
-            "price": self.price
+            "price": self.price,
+            "url_pdf": self.url_pdf
         })
 
 
@@ -71,6 +73,8 @@ class Plan(Document):
     price = ListField(required=True)
 
     description = StringField(max_length=120, required=False)
+
+    url_pdf = StringField(max_length=255, required=False)
 
     status = BooleanField(max_length=5, required=False, default=True)
 
@@ -131,6 +135,7 @@ class Plan(Document):
         self.transplant = data['transplant']
         self.cost_admin = data['cost_admin']
         self.price = data['price']
+        self.url_pdf = data['url_pdf']
         self.date_modified = datetime.datetime.now
         self.save()
         return True
