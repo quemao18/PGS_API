@@ -65,7 +65,6 @@ class SessionIdentity:
             "maternity": self.maternity,
             "transplant": self.transplant,
             "plans": self.plans
-            
         })
 
 

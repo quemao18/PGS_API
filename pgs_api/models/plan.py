@@ -16,7 +16,7 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, plan_id, description, price, transplant, maternity, cost_admin, url_pdf): 
+    def __init__(self, id, company_id, name, plan_id, description, price, transplant, maternity, cost_admin, url_info): 
         self.id = id
         self.plan_id
         self.company_id = company_id
@@ -26,7 +26,7 @@ class SessionIdentity:
         self.transplant
         self.maternity
         self.cost_admin
-        self.url_pdf
+        self.url_info
 
         
     # --------------------------------------------------------------------------
@@ -44,7 +44,7 @@ class SessionIdentity:
             "transplant": self.transplant,
             "cost_admin": self.cost_admin,
             "price": self.price,
-            "url_pdf": self.url_pdf
+            "url_info": self.url_info
         })
 
 
@@ -74,7 +74,7 @@ class Plan(Document):
 
     description = StringField(max_length=120, required=False)
 
-    url_pdf = StringField(max_length=255, required=False)
+    url_info = StringField(max_length=255, required=False)
 
     status = BooleanField(max_length=5, required=False, default=True)
 
@@ -135,7 +135,7 @@ class Plan(Document):
         self.transplant = data['transplant']
         self.cost_admin = data['cost_admin']
         self.price = data['price']
-        self.url_pdf = data['url_pdf']
+        self.url_info = data['url_info']
         self.date_modified = datetime.datetime.now
         self.save()
         return True
@@ -153,7 +153,8 @@ class Plan(Document):
                                self.price,
                                self.transplant,
                                self.maternity,
-                               self.cost_admin
+                               self.cost_admin, 
+                               self.url_info
                               )
 
 # ------------------------------------------------------------------------------

@@ -2,7 +2,7 @@ from pgs_api import app
 from flask import request, jsonify, render_template
 from pgs_api.models.account import User
 from pgs_api.models.account import UserService
-from pgs_api.security.idam import find_user, all_users
+from pgs_api.security.idam import find_user, all_users, find_user_email
 from pgs_api.extensions.jsonp import enable_jsonp
 from pgs_api.extensions.error_handling import ErrorResponse
 from pgs_api.extensions.error_handling import SuccessResponse
@@ -40,6 +40,19 @@ def get_account():
 @enable_jsonp
 def get_account_by_id(user_id):
     identity = find_user(user_id)
+    if identity:
+        return identity.as_json()
+    return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
+
+# --------------------------------------------------------------------------
+# GET: /account/<email>
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<email>/email', methods=['GET'])
+# @jwt_required()
+@enable_jsonp
+def get_account_by_email(email):
+    identity = find_user_email(email)
+    print(identity.as_json())
     if identity:
         return identity.as_json()
     return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()

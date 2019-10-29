@@ -110,3 +110,17 @@ Updated plan_id: 43116285-067d-4e90-86ca-d55d5cd1e261
 Authenticated user with correct credentials user: admin@pgs.com
 Authenticated user with correct credentials user: admin@pgs.com
 Authenticated user with correct credentials user: admin@pgs.com
+User data {'name': 'Alejandro Toba', 'last_name': '', 'username': 'alejandro.toba@gmail.com', 'email': 'alejandro.toba@gmail.com', 'photo': 'https://lh3.googleusercontent.com/a-/AAuE7mB33FW3mREF_xiA4FQcTUArR4wgkGuO4a3UEEYOVCQ=s96-c', 'password': '', 'user_type': 4, 'gender': 'male', 'country_id': 'e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8', 'age': 34, 'spouse_gender': 'none', 'spouse_age': 0, 'dependents': 0, 'dependents_ages': [], 'maternity': False, 'smoker': False, 'transplant': False} 
+User User(username='alejandro.toba@gmail.com') was updated
+Send email to: alejandro.toba@gmail.com
+Updated plans for user_id: f77542ba-21aa-48ad-a2d9-fa68607166ae
+User data {'name': 'Alejandro Toba', 'last_name': '', 'username': 'alejandro.toba@gmail.com', 'email': 'alejandro.toba@gmail.com', 'photo': 'https://lh3.googleusercontent.com/a-/AAuE7mB33FW3mREF_xiA4FQcTUArR4wgkGuO4a3UEEYOVCQ=s96-c', 'password': '', 'user_type': 4, 'gender': 'male', 'country_id': 'e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8', 'age': 37, 'spouse_gender': 'female', 'spouse_age': 33, 'dependents': 1, 'dependents_ages': ['4'], 'maternity': True, 'smoker': False, 'transplant': True} 
+User User(username='alejandro.toba@gmail.com') was updated
+User data {'name': 'Alejandro Toba', 'last_name': '', 'username': 'alejandro.toba@gmail.com', 'email': 'alejandro.toba@gmail.com', 'photo': 'https://lh3.googleusercontent.com/a-/AAuE7mB33FW3mREF_xiA4FQcTUArR4wgkGuO4a3UEEYOVCQ=s96-c', 'password': '', 'user_type': 4, 'gender': 'male', 'country_id': 'e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8', 'age': 37, 'spouse_gender': 'female', 'spouse_age': 33, 'dependents': 1, 'dependents_ages': ['4'], 'maternity': True, 'smoker': False, 'transplant': True} 
+User User(username='alejandro.toba@gmail.com') was updated
+User data {'name': 'Alejandro Toba', 'last_name': '', 'username': 'alejandro.toba@gmail.com', 'email': 'alejandro.toba@gmail.com', 'photo': 'https://lh3.googleusercontent.com/a-/AAuE7mB33FW3mREF_xiA4FQcTUArR4wgkGuO4a3UEEYOVCQ=s96-c', 'password': '', 'user_type': 4, 'gender': 'male', 'country_id': 'e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8', 'age': 37, 'spouse_gender': 'female', 'spouse_age': 33, 'dependents': 1, 'dependents_ages': ['4'], 'maternity': True, 'smoker': False, 'transplant': True} 
+User User(username='alejandro.toba@gmail.com') was updated
+User data {'name': 'Alejandro Toba', 'last_name': '', 'username': 'alejandro.toba@gmail.com', 'email': 'alejandro.toba@gmail.com', 'photo': 'https://lh3.googleusercontent.com/a-/AAuE7mB33FW3mREF_xiA4FQcTUArR4wgkGuO4a3UEEYOVCQ=s96-c', 'password': '', 'user_type': 4, 'gender': 'male', 'country_id': 'e66ac85d-a0b0-443e-a8a3-3f5bfe56e5f8', 'age': 37, 'spouse_gender': 'female', 'spouse_age': 33, 'dependents': 1, 'dependents_ages': ['4'], 'maternity': True, 'smoker': False, 'transplant': True} 
+User User(username='alejandro.toba@gmail.com') was updated
+Send email to: alejandro.toba@gmail.com
+Send email to: alejandro.toba@gmail.com
