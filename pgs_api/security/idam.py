@@ -66,7 +66,7 @@ def find_user(user_id):
 # ------------------------------------------------------------------------------
 def find_user_email(email):
     try:
-        user = User.objects.fields(slice__plans=-5).get(email=email)
+        user = User.objects.fields(slice__plans=-3).get(email=email)
         return user.get_identity()
     except DoesNotExist:
         app.logger.warning('A retrieval attempt of non-existing user occurred: ' + email)
