@@ -277,6 +277,8 @@ class User(Document):
     # --------------------------------------------------------------------------
     def update_plans(self, plans):
         """The method for update health"""
+        if len(self.plans) > 2:
+            self.plans.pop(0)
         self.plans.append(plans)
         self.save()
         return True

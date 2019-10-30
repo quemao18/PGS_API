@@ -52,7 +52,7 @@ def get_account_by_id(user_id):
 @enable_jsonp
 def get_account_by_email(email):
     identity = find_user_email(email)
-    print(identity.as_json())
+    # print(identity.as_json())
     if identity:
         return identity.as_json()
     return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
