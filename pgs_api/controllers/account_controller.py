@@ -2,7 +2,7 @@ from pgs_api import app
 from flask import request, jsonify, render_template
 from pgs_api.models.account import User
 from pgs_api.models.account import UserService
-from pgs_api.security.idam import find_user, all_users, find_user_email
+from pgs_api.security.idam import find_user, all_users, find_user_email, find_users_email_logged
 from pgs_api.extensions.jsonp import enable_jsonp
 from pgs_api.extensions.error_handling import ErrorResponse
 from pgs_api.extensions.error_handling import SuccessResponse
@@ -56,6 +56,20 @@ def get_account_by_email(email):
     if identity:
         return identity.as_json()
     return ErrorResponse('User not found', 'The provided user_id is not valid').as_json()
+
+# --------------------------------------------------------------------------
+# GET: /account/<email>/email_logged
+# --------------------------------------------------------------------------
+@app.route('/api/v1/account/<email>/email_logged', methods=['GET'])
+# @jwt_required()
+@enable_jsonp
+def get_accounts_by_email_logged(email):
+    identity = find_users_email_logged(email)
+    # print(identity.as_json())
+    if identity:
+        return jsonify(identity)
+    return ErrorResponse('User not found', 'The provided email is not valid').as_json()
+
 
 # --------------------------------------------------------------------------
 # GET: /account/<uid>/plans
@@ -214,7 +228,10 @@ def post_account():
             spouse_age=user_data['spouse_age'],
             spouse_gender = user_data['spouse_gender'],
             dependents = user_data['dependents'],
-            dependents_ages = user_data['dependents_ages']
+            dependents_ages = user_data['dependents_ages'],
+            email_logged = user_data['email_logged'],
+            name_logged = user_data['name_logged'],
+            photo_logged = user_data['photo_logged']
             )
             user.update_password(user_data['password'])
             user.save(validate=False)

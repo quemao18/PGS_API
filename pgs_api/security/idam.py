@@ -75,6 +75,20 @@ def find_user_email(email):
     return None
 
 # ------------------------------------------------------------------------------
+# FIND USERS By EMAIL Logged
+# ------------------------------------------------------------------------------
+def find_users_email_logged(email):
+    try:
+        users = User.objects.fields(slice__plans=-3).filter(email_logged=email)
+        # print(email)
+        return users
+    except DoesNotExist:
+        app.logger.warning('A retrieval attempt of non-existing user occurred: ' + email)
+    # except MultipleObjectsReturned:
+    #     app.logger.error('The username has more than 1 match in database. Urgent revision required. ' + email)
+    return None
+
+# ------------------------------------------------------------------------------
 # ALL USERS
 # ------------------------------------------------------------------------------
 def all_users(term):

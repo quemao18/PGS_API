@@ -40,6 +40,10 @@ class SessionIdentity:
         self.maternity = maternity
         self.transplant = transplant
         self.plans = plans
+        # self.email = email_logged
+        # self.name_logged = name_logged
+        # self.photo_logged = photo_logged
+
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -64,7 +68,10 @@ class SessionIdentity:
             "dependents_ages": self.dependents_ages,
             "maternity": self.maternity,
             "transplant": self.transplant,
-            "plans": self.plans
+            "plans": self.plans,
+            # "email_logged": self.email_logged,
+            # "name_logged": self.name_logged,
+            # "photo_logged": self.photo_logged
         })
 
 
@@ -88,7 +95,13 @@ class User(Document):
 
     username = StringField(max_length=120, required=False, unique=True)
 
+    email_logged = StringField(max_length=120, required=False, unique=False)
+
+    name_logged = StringField(max_length=120, required=False, unique=False)
+
     photo = StringField(max_length=255, required=False, default='')
+
+    photo_logged = StringField(max_length=255, required=False, default='')
 
     # phone = StringField(max_length=120, required=False, default='')
 
@@ -137,6 +150,7 @@ class User(Document):
             'user_id',
             'username',
             'email',
+            'email_logged',
              {'fields': ['$email', "$name", "$last_name"],}
         ]
     }
@@ -175,15 +189,14 @@ class User(Document):
         self.name = data['name']
         self.last_name = data['last_name']
         self.email = data['email']
+        self.email_logged = data['email_logged']
+        self.name_logged = data['name_logged']
         self.gender = data['gender']
         self.age = data['age']
         self.country_id = data['country_id']
         self.smoker = data['smoker']
         self.photo = data['photo']
-        # self.phone = data['phone']
-        #self.surgical = data['surgical']
-        #self.health = health
-        #self.user_type = user_type
+        self.photo_logged = data['photo_logged']
         self.spouse_age = data['spouse_age']
         self.spouse_gender = data['spouse_gender']
         self.dependents = data['dependents']
@@ -249,9 +262,12 @@ class User(Document):
                                self.name,
                                self.last_name,
                                self.email, 
+                            #    self.name_logged,
+                            #    self.email_logged,
                                self.gender,
                                self.age,
                                self.photo,
+                            #    self.photo_logged,
                                self.country_id,
                                self.smoker, 
                                self.user_type, 
