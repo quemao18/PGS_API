@@ -79,7 +79,7 @@ def find_user_email(email):
 # ------------------------------------------------------------------------------
 def find_users_email_logged(email):
     try:
-        users = User.objects.fields(slice__plans=-3).filter(email_logged=email)
+        users = User.objects.fields(slice__plans=-3).filter(email_logged=email).order_by('-date_modified').limit(500)
         # print(email)
         return users
     except DoesNotExist:
