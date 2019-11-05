@@ -61,9 +61,9 @@ class Company(Document):
 
     status = BooleanField(max_length=5, required=False, default=True)
 
-    logo = StringField(max_length=250, required=False, default="")
+    logo = StringField(required=False, default="")
 
-    description = StringField(max_length=250, required=False, default="")
+    description = StringField(required=False, default="")
 
     date_modified = DateTimeField(default=datetime.datetime.now)
 
