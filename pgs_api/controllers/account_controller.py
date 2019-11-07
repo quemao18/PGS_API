@@ -312,3 +312,38 @@ def send_email_user(user_id):
         app.logger.info('%s', e)
         # print(e)
         return ErrorResponse('Could not send mail user_id', 'Invalid user_id provided').as_json()
+
+
+# --------------------------------------------------------------------------
+# GET PLAN STATS
+# --------------------------------------------------------------------------
+# Gets the account information associated with current session in the system
+@app.route('/api/v1/account/stats_plans', methods=['GET'])
+# @jwt_required()
+# @enable_jsonp
+def get_stats_plans():
+    pipeline = [
+    # Matchn the documents possible
+    # { "$match": { "date": { "$gte": startdate } } },
+    # Group the documents and "count" via $sum on the values
+    # {'$project': {'_id': 0, 'plans': 1 } },
+
+    {'$unwind': "$plans" },
+    {'$group': { 
+                "_id": {
+                    "plan_name": "$plans.plan_name",
+                    "company_name": "$plans.company_name"
+                },
+                'plan_count': { '$sum': 1 } 
+                }
+    },
+
+    {'$project': { '_id': 0,'fields': "$_id",'plan_count': 1 , }},
+    {'$sort': { 'plan_count': -1 } },
+    
+    ]
+    cursor = User.objects.aggregate(*pipeline)
+    
+    # cursor = User.collections.aggregate(pipeline)
+    # results = list(Foo.objects.aggregate(*pipeline))
+    return jsonify([doc for doc in cursor])
