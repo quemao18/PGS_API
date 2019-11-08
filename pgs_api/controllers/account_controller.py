@@ -280,16 +280,17 @@ def send_email_user(user_id):
         # app.logger.info('Send to: %s', FROM_EMAIL)
         me = FROM_EMAIL
         you = user.email
-
+        logged = user.email_logged  
+        recipients = [you, logged]
         # Create message container - the correct MIME type is multipart/alternative.
         msg = MIMEMultipart('alternative')
         msg['Subject'] = "Solicitud recibida."
         msg['From'] = me
-        msg['To'] = you
+        msg['To'] = ", ".join(recipients)
 
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hola! " + user.name +", \nHemos recibido tu solicitud, pronto te contactaremos.\nGracias por preferirnos."
-        html = render_template('email_success.html', name=user.name)
+        html = render_template('email_success.html', name=user.name, user=user)
         # Record the MIME types of both parts - text/plain and text/html.
         part1 = MIMEText(text, 'plain')
         part2 = MIMEText(html, 'html')
@@ -306,7 +307,7 @@ def send_email_user(user_id):
         # and message to send - here it is sent as one string.
         s.starttls()
         s.login(USER_SMTP, PASS_SMTP)
-        s.sendmail(me, you, msg.as_string())
+        s.sendmail(me, recipients, msg.as_string())
         s.quit
     except Exception as e: 
         app.logger.info('%s', e)

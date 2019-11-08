@@ -66,7 +66,7 @@ def find_user(user_id):
 # ------------------------------------------------------------------------------
 def find_user_email(email):
     try:
-        user = User.objects.fields(slice__plans=-3).get(email=email)
+        user = User.objects.fields(slice__plans=-10).get(email=email)
         return user.get_identity()
     except DoesNotExist:
         app.logger.warning('A retrieval attempt of non-existing user occurred: ' + email)
@@ -79,7 +79,7 @@ def find_user_email(email):
 # ------------------------------------------------------------------------------
 def find_users_email_logged(email):
     try:
-        users = User.objects.fields(slice__plans=-3).filter(email_logged=email).order_by('-date_modified').limit(100)
+        users = User.objects.fields(slice__plans=-10).filter(email_logged=email).order_by('-date_modified').limit(100)
         # print(email)
         return users
     except DoesNotExist:

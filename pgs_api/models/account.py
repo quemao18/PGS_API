@@ -294,7 +294,7 @@ class User(Document):
     def update_plans(self, plans):
         """The method for update health"""
         plans['date'] = datetime.datetime.strptime(plans['date'], '%Y-%m-%d %H:%M:%S.%f')
-        if len(self.plans) > 2:
+        if len(self.plans) > 9:
             self.plans.pop(0)
         self.plans.append(plans)
         self.save()
