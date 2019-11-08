@@ -46,5 +46,5 @@ PORT_SMTP = 587
 HOST_SMTP = 'mail.rodasalias.com'
 USER_SMTP = 'test@rodasalias.com'
 PASS_SMTP = 'test@rodasalias'
-PORT_SMTP = 465
+# PORT_SMTP = 465
 
