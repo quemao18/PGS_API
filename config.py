@@ -41,8 +41,10 @@ HOST_SMTP = 'email-smtp.us-east-1.amazonaws.com'
 FROM_EMAIL = 'info@rodasalias.com'
 USER_SMTP = 'AKIA4NXPK3KZCM7RYQHR'
 PASS_SMTP = 'BG/ibH6Hb39NVDG9iVja6mR2KWXGFYC0jyziqNXAnKii'
-HOST_SMTP = 'smtp.gmail.com'
-USER_SMTP = 'alejandro.toba@gmail.com'
-PASS_SMTP = 'Astaroth_0455'
 PORT_SMTP = 587
+
+HOST_SMTP = 'mail.rodasalias.com'
+USER_SMTP = 'test@rodasalias.com'
+PASS_SMTP = 'test@rodasalias'
+PORT_SMTP = 465
 
