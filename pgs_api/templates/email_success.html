@@ -1,11 +1,73 @@
 <html>
-<head></head>
+<head>
+
+    <style>
+        #customers {
+          font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 80%;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #9e946b;
+          color: white;
+        }
+        </style>
+
+</head>
+
+
 <body>
-    <p>Hola! {{name}},<br>
-    Hemos recibido tu cotización, en breve te contactaremos.<br>
-    Gracias por preferirnos.
-    </p>
-    
+    <p>Hola! {{name}},<br> A continuación se muestran los detalles de tu cotización   </p>
+
+        <table id="customers">
+            <thead>
+              <tr>
+                <th>Compañía</th>
+                <th>Plan</th>
+                <!-- <th>Fecha</th> -->
+                <th>Precio</th>
+                <th>Precio conyugue</th>
+                <th>Precio dependientes</th>
+                <th>Deducible</th>
+                <th>Complicaciones de maternidad</th>
+                <th>Transplante de organos</th>
+                <th>Costos admin.</th>
+              </tr>
+            </thead>
+            <tbody>
+            {%for plan in userPlans['plans']%} 
+              <tr>
+               <td> {{plan['company_name']}} </td>
+               <td> {{plan['plan_name']}} </td>
+               <td> {{plan['option_prices'][0]}} </td>
+               <td> {{plan['option_prices'][1]}} </td>
+               <td> {{plan['option_prices'][2]}} </td>
+               <td> {{plan['deductible']}} </td>
+               <td> {{plan['maternity']}} </td>
+               <td> {{plan['transplant']}} </td>
+               <td> {{plan['cost_admin']}} </td>
+              </tr>
+            {%endfor%}   
+            </tbody>
+          </table>
+          
+    <p>
+        <!-- Hemos recibido tu cotización, en breve te contactaremos.<br> -->
+    Gracias por preferirnos.</p>
+
     <p><a href="http://www.pgs-consulting.org">www.pgs-consulting.com</a></p>
 </body>
 </html>

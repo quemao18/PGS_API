@@ -192,7 +192,7 @@ def update_account_plans(user_id):
         user_service = UserService(user_id)
         user = user_service.get_user()
         if user.update_plans(plans):
-            send_email_user(user.user_id)
+            send_email_user(user.user_id, plans)
             app.logger.info('Updated plans for user_id: %s', user_id)
             return SuccessResponse('Success', 'Plans update success', 'PLANS_OK').as_json()
     except:
@@ -272,8 +272,11 @@ def delete_account(user_id):
 # --------------------------------------------------------------------------
 # SEND MAIL: 
 # --------------------------------------------------------------------------
-def send_email_user(user_id):
+# @app.route('/api/v1/account/<user_id>/send_email', methods=['POST'])
+
+def send_email_user(user_id, plans):
     try:
+        # print(plans)
         service = UserService(user_id)
         user = service.get_user()
         app.logger.info('Send email to: %s', user.email)
@@ -290,7 +293,7 @@ def send_email_user(user_id):
 
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hola! " + user.name +", \nHemos recibido tu solicitud, pronto te contactaremos.\nGracias por preferirnos."
-        html = render_template('email_success.html', name=user.name, user=user)
+        html = render_template('email_success.html', name=user.name, userPlans=plans)
         # Record the MIME types of both parts - text/plain and text/html.
         part1 = MIMEText(text, 'plain')
         part2 = MIMEText(html, 'html')

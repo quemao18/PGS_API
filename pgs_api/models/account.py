@@ -292,13 +292,15 @@ class User(Document):
     # METHOD update plans user
     # --------------------------------------------------------------------------
     def update_plans(self, plans):
-        """The method for update health"""
-        plans['date'] = datetime.datetime.strptime(plans['date'], '%Y-%m-%d %H:%M:%S.%f')
-        if len(self.plans) > 9:
-            self.plans.pop(0)
-        self.plans.append(plans)
-        self.save()
-        return True
+        for plans in plans['plans']:
+            """The method for update health"""
+            plans['date'] = datetime.datetime.strptime(plans['date'], '%Y-%m-%d %H:%M:%S.%f')
+            if len(self.plans) > 9:
+                self.plans.pop(0)
+            self.plans.append(plans)
+            self.save()
+            return True
+        return False
 
     # --------------------------------------------------------------------------
     # METHOD update plan user
