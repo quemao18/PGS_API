@@ -293,7 +293,7 @@ def send_email_user(user_id, plans):
 
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hola! " + user.name +", \nHemos recibido tu solicitud, pronto te contactaremos.\nGracias por preferirnos."
-        html = render_template('email_success.html', name=user.name, email=user.email, userPlans=plans)
+        html = render_template('email_success.html', name=user.name, email=user.email, age=user.age, userPlans=plans)
         # Record the MIME types of both parts - text/plain and text/html.
         part1 = MIMEText(text, 'plain')
         part2 = MIMEText(html, 'html')
