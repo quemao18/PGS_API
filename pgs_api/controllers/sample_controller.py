@@ -6,7 +6,7 @@ from flask import jsonify
 # ROOT RESOURCE OF THE API
 # --------------------------------------------------------------------------
 #
-@app.route('/', methods=['GET'])
+@app.route('/api/v1/', methods=['GET'])
 def get_api_root():
     return jsonify({
         "platform": "PSG API 1.0",
