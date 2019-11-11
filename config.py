@@ -38,13 +38,13 @@ MONGODB_PASSWORD = ''
 #------------------------
 
 HOST_SMTP = 'email-smtp.us-east-1.amazonaws.com'
-FROM_EMAIL = 'info@rodasalias.com'
+FROM_EMAIL = 'info@novemapp.com'
 USER_SMTP = 'AKIA4NXPK3KZCM7RYQHR'
 PASS_SMTP = 'BG/ibH6Hb39NVDG9iVja6mR2KWXGFYC0jyziqNXAnKii'
 PORT_SMTP = 587
 
-HOST_SMTP = 'mail.rodasalias.com'
-USER_SMTP = 'test@rodasalias.com'
-PASS_SMTP = 'test@rodasalias'
+# HOST_SMTP = 'mail.rodasalias.com'
+# USER_SMTP = 'test@rodasalias.com'
+# PASS_SMTP = 'test@rodasalias'
 # PORT_SMTP = 465
 
