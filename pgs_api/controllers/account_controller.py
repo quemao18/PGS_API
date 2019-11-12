@@ -193,7 +193,8 @@ def update_account_plans(user_id):
         user = user_service.get_user()
         if user.update_plans(plans):
             send_email_user(user.user_id, plans)
-            app.logger.info('Updated plans for user_id: %s', user_id)
+            # app.logger.info('Updated plans for user_id: %s', user_id)
+            app.logger.info('Plans for user %s was updated', user)
             return SuccessResponse('Success', 'Plans update success', 'PLANS_OK').as_json()
     except:
         app.logger.error('Invalid json received for user: %s', user_id)
@@ -235,7 +236,8 @@ def post_account():
             )
             user.update_password(user_data['password'])
             user.save(validate=False)
-            app.logger.info('User %s was created', user.user_id)
+            # app.logger.info('User %s was created', user.user_id)
+            app.logger.info('User %s was created', user)
             return SuccessResponse(user.user_id, 'User created successfully', 'n/a').as_json()
         except mongoengine.errors.NotUniqueError as e:
             user = User.objects.get(email=user_data['email'])
