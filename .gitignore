@@ -5,5 +5,4 @@ pgs_api.log
 !**/models/**/__pycache__/
 !**/security/**/__pycache__/
 pgs_api/controllers/__pycache__/
-pgs_api.log
-pgs_api.log
+pgs_api/pgs_api.log
