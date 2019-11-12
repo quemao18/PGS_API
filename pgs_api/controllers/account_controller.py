@@ -279,7 +279,8 @@ def send_email_user(user_id, plans):
         # print(plans)
         service = UserService(user_id)
         user = service.get_user()
-        app.logger.info('Send email to: %s', user.email)
+        app.logger.info('Send email to user: %s', user.email)
+        app.logger.info('Send email to user logged: %s', user.email_logged)
         # app.logger.info('Send to: %s', FROM_EMAIL)
         me = FROM_EMAIL
         you = user.email
@@ -312,8 +313,10 @@ def send_email_user(user_id, plans):
         s.login(USER_SMTP, PASS_SMTP)
         s.sendmail(me, recipients, msg.as_string())
         s.quit
-    except Exception as e: 
-        app.logger.info('%s', e)
+    except smtplib.SMTPException as e:
+        app.logger.info('%s', str(e))
+        app.logger.info('Error send email to user: %s', user.email)
+        app.logger.info('Error send email to user logged: %s', user.email_logged)
         # print(e)
         return ErrorResponse('Could not send mail user_id', 'Invalid user_id provided').as_json()
 
