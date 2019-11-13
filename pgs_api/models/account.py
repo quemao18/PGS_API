@@ -99,9 +99,9 @@ class User(Document):
 
     name_logged = StringField(max_length=120, required=False, unique=False)
 
-    photo = StringField(max_length=255, required=False, default='')
+    photo = StringField(required=False, default='')
 
-    photo_logged = StringField(max_length=255, required=False, default='')
+    photo_logged = StringField(required=False, default='')
 
     # phone = StringField(max_length=120, required=False, default='')
 
