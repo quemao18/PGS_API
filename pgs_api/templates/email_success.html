@@ -49,6 +49,7 @@
                 <th>Complicaciones de maternidad</th>
                 <th>Transplante de organos</th>
                 <th>Costos admin.</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>
@@ -56,13 +57,22 @@
               <tr>
                <td> {{plan['company_name']}} </td>
                <td> {{plan['plan_name']}} </td>
-               <td> {{plan['option_prices'][0]}} </td>
-               <td> {{plan['option_prices'][1]}} </td>
-               <td> {{plan['option_prices'][2]}} </td>
-               <td> {{plan['deductible']}} </td>
-               <td> {{plan['maternity']}} </td>
-               <td> {{plan['transplant']}} </td>
-               <td> {{plan['cost_admin']}} </td>
+               <td> {{'${0:,.2f}'.format(plan['option_prices'][0])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['option_prices'][1])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['option_prices'][2])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['deductible'])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['maternity'])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['transplant'])}} </td>
+               <td> {{'${0:,.2f}'.format(plan['cost_admin'])}} </td>
+               <td> {{
+                  '${0:,.2f}'.format(
+                 plan['option_prices'][0] + 
+                 plan['option_prices'][1] + 
+                 plan['option_prices'][2] + 
+                 plan['maternity'] +
+                 plan['transplant'] +
+                 plan['cost_admin'])
+                }} </td>
               </tr>
             {%endfor%}   
             </tbody>
