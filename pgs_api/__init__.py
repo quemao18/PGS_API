@@ -23,7 +23,7 @@ app.debug = True
 # SETUP LOGGING
 # ------------------------------------------------------------------------------
 
-handler = RotatingFileHandler('pgs_api.log', maxBytes=10000, backupCount=5)
+handler = RotatingFileHandler('pgs_api.log', maxBytes=1000000, backupCount=5)
 handler.setLevel(logging.INFO)
 app.logger.addHandler(handler)
 

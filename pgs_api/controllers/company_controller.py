@@ -80,7 +80,6 @@ def get_all_companies_id_user(user_id):
     service = CompanyService
     user_service = UserService(user_id)
     user = user_service.get_user()
-    #print(user.country_id)
     companies = service.get_companies_app('')
     comps =[]
     for company in companies:
@@ -93,7 +92,7 @@ def get_all_companies_id_user(user_id):
 
                 for price in plan.price:
                     if price['country_id'] == user.country_id:
-                        # new_price.append(price)
+
                         for age_filter in price['table']:
                             age = age_filter['age_range'].split('-') 
                             if( 
@@ -106,34 +105,28 @@ def get_all_companies_id_user(user_id):
                             int(age_filter['price7']) > 0 or
                             int(age_filter['price8']) > 0 
                             ):
-                                if(age_filter['age_range'] != '80+' and 
-                                    age_filter['age_range'] != 'Deducible' and 
+                               
+                                if(
+                                    age_filter['age_range'] != '80+' and 
                                     age_filter['age_range'] != '1 dependiente' and 
                                     age_filter['age_range'] != '2 dependientes' and 
                                     age_filter['age_range'] != '3+ dependientes' and 
                                     age_filter['age_range'] != 'Deducible' ):
-                                    # total = 0
-                                    isUser = False
-                                    isSpouse = False
-                                    # age_filter['user']=''
+                            
                                     if(int(age[0]) <= user.age <=int(age[1])):
-                                        # if(not age_filter in new_price ):  
-                                        # new_price.append({'user':'user'})
-                                            # total = age_filter['price1']
                                         new_price.append(age_filter)
-                                    if(int(age[0]) <= user.spouse_age <=int(age[1])):
-                                        # if(not age_filter in new_price):      
-                                        # new_price.append({'user':'spouse'}) 
-                                        # total += age_filter['price1']                            
+                                    if(int(age[0]) <= user.spouse_age <=int(age[1])):                      
                                         new_price.append(age_filter)  
-                                    # print(total)
-                                if(age_filter['age_range'] == '80+' and user.age > 79):
+
+                                if(age_filter['age_range'] == '80+' and user.age >= 80):
+                                    new_price.append(age_filter)
+                                if(age_filter['age_range'] == '80+' and user.spouse_age >= 80):
                                     new_price.append(age_filter)
                                 if(age_filter['age_range'] == '1 dependiente'   and user.dependents == 1):
                                     new_price.append(age_filter)
                                 if(age_filter['age_range'] == '2 dependientes'  and user.dependents == 2):
                                     new_price.append(age_filter)
-                                if(age_filter['age_range'] == '3+ dependientes' and user.dependents >  2):
+                                if(age_filter['age_range'] == '3+ dependientes' and user.dependents >= 3):
                                     new_price.append(age_filter)
                                 if(age_filter['age_range'] == 'Deducible'):
                                     if(not age_filter in new_price):                                    
