@@ -6,6 +6,7 @@ from pgs_api import app
 import ssl
 
 import socket
+from config import DEBUG
 
 """
 PGS API is a boilerplate application that allows you to create Python + Flask API
@@ -28,5 +29,5 @@ if __name__ == '__main__':
     
     if host_name == 'BEELZEBUB':
         app.run('0.0.0.0', port)
-    app.run(port = port, host='0.0.0.0', debug=True, use_reloader=True, ssl_context=(CERT_SSL,KEY_SSL))
+    app.run(port = port, host='0.0.0.0', debug=DEBUG, use_reloader=True, ssl_context=(CERT_SSL,KEY_SSL))
 

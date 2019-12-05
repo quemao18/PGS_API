@@ -1,6 +1,6 @@
 import datetime
 # Turns on debugging features in Flask
-DEBUG = False
+DEBUG = True
 #
 # For use in web_app emails
 MAIL_FROM_EMAIL = "info@gernet-api.org"
