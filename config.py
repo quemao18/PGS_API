@@ -1,6 +1,6 @@
 import datetime
 # Turns on debugging features in Flask
-DEBUG = True
+DEBUG = False
 #
 # For use in web_app emails
 MAIL_FROM_EMAIL = "info@gernet-api.org"
@@ -9,7 +9,7 @@ MAIL_FROM_EMAIL = "info@gernet-api.org"
 # Its also used by extensions like Flask-Bcrypt. You should
 # define this in your instance folder to keep it out of version
 # control.
-SECRET_KEY = 'change_this_please'  # Change for production
+SECRET_KEY = 'pgs consulting api'  # Change for production
 #
 # Configuration for the Flask-Bcrypt extension
 BCRYPT_LEVEL = 12
