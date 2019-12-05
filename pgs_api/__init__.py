@@ -16,7 +16,7 @@ app = Flask('pgs_api')
 CORS(app)
 
 app.config.from_object('config')
-app.debug = True
+app.debug = False
 
 
 # ------------------------------------------------------------------------------
