@@ -21,6 +21,8 @@ from email.mime.text import MIMEText
 from config import FROM_EMAIL, HOST_SMTP, USER_SMTP, PASS_SMTP, PORT_SMTP
 import codecs
 
+from pgs_api.models.company import CompanyService
+
 # --------------------------------------------------------------------------
 # GET ACCOUNT
 # --------------------------------------------------------------------------
@@ -279,6 +281,14 @@ def delete_account(user_id):
 def send_email_user(user_id, plans):
     try:
         # print(plans)
+        comparatives = []
+        for plan in plans['plans']:
+            company_id = plan['company_id']
+            company = CompanyService(company_id)
+            comp = company.get_company()
+            if(not comp.comparative in comparatives):                                    
+                comparatives.append(comp.comparative)   
+        # app.logger.info('Company: %s', str(comparatives))
         service = UserService(user_id)
         user = service.get_user()
         app.logger.info('Send email to user: %s', user.email)
@@ -296,7 +306,7 @@ def send_email_user(user_id, plans):
 
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hola! " + user.name +", \nHemos recibido tu solicitud, pronto te contactaremos.\nGracias por preferirnos."
-        html = render_template('email_success.html', name=user.name, email=user.email, age=user.age, userPlans=plans)
+        html = render_template('email_success.html', name=user.name, email=user.email, age=user.age, userPlans=plans, comparatives=comparatives)
         # Record the MIME types of both parts - text/plain and text/html.
         part1 = MIMEText(text, 'plain')
         part2 = MIMEText(html, 'html')

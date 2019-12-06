@@ -226,6 +226,24 @@ def update_logo(company_id):
         app.logger.error('Invalid json received for company: %s', company_id)
         return ErrorResponse('Could not update URL', 'Invalid URL provided').as_json()
 
+# --------------------------------------------------------------------------
+# POST: /company/comparative
+# --------------------------------------------------------------------------
+@app.route('/api/v1/company/<company_id>/comparative', methods=['PUT'])
+#@jwt_required()
+@enable_jsonp
+def update_comparative(company_id):
+    try:
+        data = request.get_json()
+        app.logger.info('Comparative URL: %s', data['url'])
+        service = CompanyService(company_id)
+        user = service.get_company()
+        if user.update_comparative_url(data['url']):
+            app.logger.info('Comparative update for company_id: %s', company_id)
+            return SuccessResponse('Success', 'URL updated successfully', 'COMPARATIVE_OK').as_json()
+    except:
+        app.logger.error('Invalid json received for company: %s', company_id)
+        return ErrorResponse('Could not update URL', 'Invalid URL provided').as_json()
 
 # --------------------------------------------------------------------------
 # POST: /account

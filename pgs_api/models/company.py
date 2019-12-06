@@ -18,15 +18,14 @@ class SessionIdentity:
     # CONSTRUCTOR METHOD
     # --------------------------------------------------------------------------
     # pylint: disable=too-many-arguments
-    def __init__(self, id, company_id, name, logo, description, email): 
+    def __init__(self, id, company_id, name, logo, description, email, comparative): 
         self.id = id
         self.company_id = company_id
         self.logo = logo
         self.email = email
         self.name = name
         self.description = description
-
-        
+        self.comparative = comparative
 
     # --------------------------------------------------------------------------
     # METHOD STR
@@ -39,7 +38,8 @@ class SessionIdentity:
             "logo": self.logo,
             "email": self.email,
             "name": self.name,
-            "description": self.description
+            "description": self.description,
+            "comparative": self.comparative
         })
 
 
@@ -62,6 +62,8 @@ class Company(Document):
     status = BooleanField(max_length=5, required=False, default=True)
 
     logo = StringField(required=False, default="")
+
+    comparative = StringField(required=False, default="")
 
     description = StringField(required=False, default="")
 
@@ -126,6 +128,15 @@ class Company(Document):
         return True
 
     # --------------------------------------------------------------------------
+    # METHOD UPDATE COMPARATIVE URL
+    # --------------------------------------------------------------------------
+    def update_comparative_url(self, url):
+        """The method for update comparative url"""
+        self.comparative = url
+        self.save()
+        return True
+
+    # --------------------------------------------------------------------------
     # METHOD UPDATE COMPANY
     # --------------------------------------------------------------------------
     def update_company(self, data):
@@ -133,6 +144,7 @@ class Company(Document):
         self.email = data['email']
         self.name = data['name']
         self.logo = data['logo']
+        self.comparative = data['comparative']
         self.description = data['description']
         self.date_modified = datetime.datetime.now
         self.save()
@@ -160,7 +172,8 @@ class Company(Document):
                                self.name,
                                self.email,
                                self.description,
-                               self.logo
+                               self.logo, 
+                               self.comparative
                               )
 
 # ------------------------------------------------------------------------------

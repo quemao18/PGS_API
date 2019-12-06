@@ -77,6 +77,12 @@
             {%endfor%}   
             </tbody>
           </table>
+
+          {%for url in comparatives%} 
+          {%if(url)%}
+          <img style="margin-left: 0px; padding: 0px" src="{{url}}" height="220px" width="80%" />
+          {%endif%}
+          {%endfor%}
           
     <p>
         <!-- Hemos recibido tu cotización, en breve te contactaremos.<br> -->
