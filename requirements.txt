@@ -57,7 +57,7 @@ pytz==2019.1
 PyYAML==5.1.2
 requests==2.22.0
 requests-oauthlib==1.2.0
-rsa==3.4.2
+rsa==4.7
 s3transfer==0.2.0
 shellescape==3.4.1
 six==1.10.0
