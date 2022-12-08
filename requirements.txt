@@ -5,7 +5,7 @@ awscli==1.16.163
 bcrypt==3.1.6
 botocore==1.12.153
 cachetools==3.1.0
-certifi==2017.4.17
+certifi==2022.12.7
 cffi==1.12.3
 chardet==3.0.4
 click==6.7
